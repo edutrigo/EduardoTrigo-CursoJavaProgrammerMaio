@@ -2,6 +2,8 @@ package Entidade;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Cachorro extends Animal {
 	private String CorPelo;
 
@@ -13,26 +15,33 @@ public class Cachorro extends Animal {
 		CorPelo = corPelo;
 	}
 
-	public void cadastraCachorro () {
+	public Cachorro cadastraCachorro () {
 		Cachorro  objCachorro       = new Cachorro();
-		Scanner   objEntradaDeDados = new Scanner(System.in);
+		//Scanner   objEntradaDeDados = new Scanner(System.in);
 		
 		// DADOS CACHORRO
-		System.out.println("Entre com os dados do Cachorro...");
+		JOptionPane.showMessageDialog( null, "Entre com os dados do Cachorro..." );
+		//System.out.println("Entre com os dados do Cachorro...");
 
-		System.out.println("Nome:");
-		objCachorro.setNome( objEntradaDeDados.next() );
-		
-		System.out.println("Idade:");
-		objCachorro.setIdade( Integer.parseInt( objEntradaDeDados.next()) );
+		objCachorro.setNome( JOptionPane.showInputDialog ( "Nome" ));
+		//System.out.println("Nome:");
+		//objCachorro.setNome( objEntradaDeDados.next() );
 
-		System.out.println("Peso:");
-		objCachorro.setPeso( Double.parseDouble(objEntradaDeDados.next()) );
-		
-		System.out.println("Preco:");
-		objCachorro.setPreco( Double.parseDouble(objEntradaDeDados.next()) );
+		objCachorro.setIdade( Integer.parseInt( JOptionPane.showInputDialog ( "Idade" )));
+		//System.out.println("Idade:");
+		//objCachorro.setIdade( Integer.parseInt( objEntradaDeDados.next()) );
 
-		System.out.println("CorPelo:");
-		objCachorro.setCorPelo( objEntradaDeDados.next() );
+		objCachorro.setPeso( Double.parseDouble( JOptionPane.showInputDialog ( "Peso" )));
+		//System.out.println("Peso:");
+		//objCachorro.setPeso( Double.parseDouble(objEntradaDeDados.next()) );
+
+		objCachorro.setPreco( Double.parseDouble( JOptionPane.showInputDialog ( "Preco" )));
+		//System.out.println("Preco:");
+		//objCachorro.setPreco( Double.parseDouble(objEntradaDeDados.next()) );
+
+		objCachorro.setCorPelo( JOptionPane.showInputDialog ( "CorPelo" ));
+		//System.out.println("CorPelo:");
+		//objCachorro.setCorPelo( objEntradaDeDados.next() );
+		return( objCachorro );
 	}
 }
