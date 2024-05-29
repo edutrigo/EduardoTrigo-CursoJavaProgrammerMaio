@@ -16,6 +16,8 @@ public class Cachorro extends Animal {
 	}
 
 	public Cachorro cadastraCachorro() {
+
+		boolean v_menuResult = true;
 		Cachorro objCachorro = new Cachorro();
 		// Scanner objEntradaDeDados = new Scanner(System.in);
 
@@ -27,10 +29,19 @@ public class Cachorro extends Animal {
 		// System.out.println("Nome:");
 		// objCachorro.setNome( objEntradaDeDados.next() );
 
-		objCachorro.setIdade(Integer.parseInt(JOptionPane.showInputDialog("Idade")));
-		// System.out.println("Idade:");
-		// objCachorro.setIdade( Integer.parseInt( objEntradaDeDados.next()) );
+		while (v_menuResult) {
+		try {
+			objCachorro.setIdade(Integer.parseInt(JOptionPane.showInputDialog("Idade")));
+			v_menuResult = false;
+			// System.out.println("Idade:");
+			// objCachorro.setIdade( Integer.parseInt( objEntradaDeDados.next()) );
 
+		} catch (Exception msgExcept) {
+			System.out.println( "erro entrada IDADE: " + msgExcept.getMessage());
+		}
+		}
+
+		
 		objCachorro.setPeso(Double.parseDouble(JOptionPane.showInputDialog("Peso")));
 		// System.out.println("Peso:");
 		// objCachorro.setPeso( Double.parseDouble(objEntradaDeDados.next()) );
