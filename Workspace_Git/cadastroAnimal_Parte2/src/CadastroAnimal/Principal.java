@@ -79,7 +79,7 @@ public class Principal {
 			for (Cachorro  cachorroItemLista:cachorroLista) {
 				impressaoString.append("Nome: ").append( cachorroItemLista.getNome()).append(v_enter)
                                .append("Idade: ").append( cachorroItemLista.getIdade()).append(v_enter)
-                               .append( "-------" );
+                               .append( "-------" ).append( v_enter );
 			} //for
 
 			JOptionPane.showMessageDialog(null, impressaoString.toString() );
