@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controlador.ControladorMainForm;
+
 public class MainForm {
 
 	public void mainFormMenu() {
@@ -27,13 +29,20 @@ public class MainForm {
 		JLabel labelOpcao2 = new JLabel("2 - COBRA");
 		panelMainForm.add(labelOpcao2);
 
+		JLabel labelOpcao3 = new JLabel("3 - SAIDA");
+		panelMainForm.add(labelOpcao3);
+
 		// CRIANDO CAIXA TEXTO PARA PERMITIR INPUT DE DADOS e agrupando no PANEL
 		JTextField boxOption = new JTextField(10);
 		panelMainForm.add(boxOption);
 
 		// CRIANDO BOTAO e agrupando no PANEL
-		JButton sendBottom = new JButton("Enviar");
+		JButton sendBottom = new JButton("Send");
 		panelMainForm.add(sendBottom);
+
+		// CRIANDO UM CONTROLADOR (LISTENER) PARA O BOTAO
+		ControladorMainForm controladorMainForm = new ControladorMainForm(boxOption);
+		sendBottom.addActionListener(controladorMainForm);
 
 		// TORNANDO O FRAME VISIVEL
 		frmMainForm.setVisible(true);
