@@ -28,6 +28,8 @@ public class ControladorMainForm implements ActionListener {
 		}
 		case "3": {
 			JOptionPane.showMessageDialog(null, "ESCOLHEU OPCAO 3...");
+			System.exit(0);
+			break;
 		}
 		default:
 			JOptionPane.showMessageDialog(null, "Somente 1 ou 2 é Valido");
