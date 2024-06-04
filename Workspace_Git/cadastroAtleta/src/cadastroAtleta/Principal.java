@@ -21,9 +21,9 @@ public class Principal {
 
 		objAtleta.v_salario = calcularSalario(objAtleta.v_qtd_partidas);
 		
-		imprimir( objAtleta );
+		//imprimir( objAtleta );
 		
-		imprimirResultadosNoConsole(objetoAtleta); // Chamo a execução do metodo para imprimir os resultados
+		imprimirResultadosNoConsole(objAtleta); // Chamo a execução do metodo para imprimir os resultados
 	}
 
 	public static void imprimirResultadosNoConsole(Atleta objAtleta) {
