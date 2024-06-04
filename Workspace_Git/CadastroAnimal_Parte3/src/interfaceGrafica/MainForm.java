@@ -14,7 +14,7 @@ public class MainForm {
 
 		// CRIANDO FRAME
 		JFrame frmMainForm = new JFrame();
-		frmMainForm.setSize(200, 200);
+		frmMainForm.setSize(130, 200);
 
 		// CRIANDO PANEL
 		JPanel panelMainForm = new JPanel();

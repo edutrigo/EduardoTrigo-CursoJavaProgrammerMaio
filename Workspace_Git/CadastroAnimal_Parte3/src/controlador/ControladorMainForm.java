@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import interfaceGrafica.CachorroForm;
+import interfaceGrafica.CobraForm;
 
 public class ControladorMainForm implements ActionListener {
 
@@ -17,22 +18,24 @@ public class ControladorMainForm implements ActionListener {
 	}
 
 	CachorroForm ScrCachorroForm = new CachorroForm();
-	
+	CobraForm ScrCobraForm = new CobraForm();
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		switch (boxTextOption.getText()) {
 		case "1": {
-			JOptionPane.showMessageDialog(null, "ESCOLHEU OPCAO 1...");
+			// JOptionPane.showMessageDialog(null, "ESCOLHEU OPCAO 1...");
 			ScrCachorroForm.montaCachorroForm();
 			break;
 		}
 		case "2": {
-			JOptionPane.showMessageDialog(null, "ESCOLHEU OPCAO 2...");
+			// JOptionPane.showMessageDialog(null, "ESCOLHEU OPCAO 2...");
+			ScrCobraForm.montaCobraForm();
 			break;
 		}
 		case "3": {
-			//JOptionPane.showMessageDialog(null, "ESCOLHEU OPCAO 3...");
+			// JOptionPane.showMessageDialog(null, "ESCOLHEU OPCAO 3...");
 			System.exit(0);
 			break;
 		}

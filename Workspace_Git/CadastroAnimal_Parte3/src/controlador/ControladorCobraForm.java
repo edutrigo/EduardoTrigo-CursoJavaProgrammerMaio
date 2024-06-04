@@ -6,18 +6,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import entidade.Cachorro;
+import entidade.Cobra;
 import manipulaArq.ManipulaArquivo;
 
-import entidade.Cachorro;
-
-public class ControladorCachorroForm implements ActionListener {
+public class ControladorCobraForm implements ActionListener {
 
 	JTextField campo_01;
 	JTextField campo_02;
 	JTextField campo_03;
 
-	public ControladorCachorroForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
+	public ControladorCobraForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;
 		this.campo_03 = campo_03;
@@ -36,19 +34,18 @@ public class ControladorCachorroForm implements ActionListener {
 
 		} else if (campo_03.getText().equals("")) {
 
-			JOptionPane.showMessageDialog(null, "Campo 'CorPelo' não pode ficar" + "\n" + "em branco!");
+			JOptionPane.showMessageDialog(null, "Campo 'Tipo Veneno' não pode ficar" + "\n" + "em branco!");
 
 		} else {
-			Cachorro cachorro = new Cachorro();
+			Cobra cobra = new Cobra();
 
-			cachorro.setNome(campo_01.getText());
-			cachorro.setCaf(Integer.parseInt(campo_02.getText()));
-			cachorro.setCorPelo(campo_03.getText());
+			cobra.setNome(campo_01.getText());
+			cobra.setCaf(Integer.parseInt(campo_02.getText()));
+			cobra.setTipoVeneno(campo_03.getText());
 
-			ManipulaArquivo regCachorro = new ManipulaArquivo();
-			regCachorro.InsereCachorro(cachorro);
-
-			JOptionPane.showMessageDialog(null, "Cadastro de Cachorro" + "\n" + "efetuado com sucesso!");
+			ManipulaArquivo regCobra = new ManipulaArquivo();
+			regCobra.InsereCobra(cobra);
+			JOptionPane.showMessageDialog(null, "Cadastro de Cobra" + "\n" + "efetuado com sucesso!");
 		}
 	}
 }

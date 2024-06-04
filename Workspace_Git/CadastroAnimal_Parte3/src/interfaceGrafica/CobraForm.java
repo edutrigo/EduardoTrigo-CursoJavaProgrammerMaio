@@ -6,56 +6,56 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controlador.ControladorCachorroForm;
+import controlador.ControladorCobraForm;
 
-public class CachorroForm {
+public class CobraForm {
 
-	public void montaCachorroForm() {
+	public void montaCobraForm() {
 
 		String v_campo_01 = "Nome";
 		String v_campo_02 = "CAF";
-		String v_campo_03 = "Cor do Pelo";
+		String v_campo_03 = "Tipo Veneno";
 
 		// CRIANDO FRAME
-		JFrame frmCachorroForm = new JFrame();
-		frmCachorroForm.setSize(150, 250);
+		JFrame frmCobraForm = new JFrame();
+		frmCobraForm.setSize(150, 250);
 
 		// CRIANDO PANEL
-		JPanel panelCachorroForm = new JPanel();
+		JPanel panelCobraForm = new JPanel();
 
 		// Agrupando o PANEL ao FRAME
-		frmCachorroForm.add(panelCachorroForm);
+		frmCobraForm.add(panelCobraForm);
 
 		// CRIANDO LABELS e agrupando no PANEL
 		// CRIANDO CAIXA TEXTO PARA PERMITIR INPUT DE DADOS e agrupando no PANEL
 		JLabel labelCampo01 = new JLabel(v_campo_01);
-		panelCachorroForm.add(labelCampo01);
+		panelCobraForm.add(labelCampo01);
 
 		JTextField InputCampo01 = new JTextField(10);
-		panelCachorroForm.add(InputCampo01);
+		panelCobraForm.add(InputCampo01);
 		//
 		JLabel labelCampo02 = new JLabel(v_campo_02);
-		panelCachorroForm.add(labelCampo02);
+		panelCobraForm.add(labelCampo02);
 
 		JTextField InputCampo02 = new JTextField(10);
-		panelCachorroForm.add(InputCampo02);
+		panelCobraForm.add(InputCampo02);
 		//
 		JLabel labelCampo03 = new JLabel(v_campo_03);
-		panelCachorroForm.add(labelCampo03);
+		panelCobraForm.add(labelCampo03);
 
 		JTextField InputCampo03 = new JTextField(10);
-		panelCachorroForm.add(InputCampo03);
+		panelCobraForm.add(InputCampo03);
 
 		// CRIANDO BOTAO e agrupando no PANEL
-		JButton saveBottom = new JButton("Save Cachorro");
-		panelCachorroForm.add(saveBottom);
+		JButton saveBottom = new JButton("Save Cobra");
+		panelCobraForm.add(saveBottom);
 
 		// CRIANDO UM CONTROLADOR (LISTENER) PARA O BOTAO
-		ControladorCachorroForm controladorCachorroForm = new ControladorCachorroForm(InputCampo01, InputCampo02, InputCampo03);
+		ControladorCobraForm controladorCobraForm = new ControladorCobraForm(InputCampo01, InputCampo02, InputCampo03);
 
-		saveBottom.addActionListener(controladorCachorroForm);
+		saveBottom.addActionListener(controladorCobraForm);
 
 		// TORNANDO O FRAME VISIVEL
-		frmCachorroForm.setVisible(true);
+		frmCobraForm.setVisible(true);
 	}
 }
