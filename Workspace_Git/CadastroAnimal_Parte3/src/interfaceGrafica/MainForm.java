@@ -34,6 +34,11 @@ public class MainForm {
 
 		// CRIANDO CAIXA TEXTO PARA PERMITIR INPUT DE DADOS e agrupando no PANEL
 		JTextField boxOption = new JTextField(10);
+
+		//boxOption.setName("SET NAME"); Date d = new Date()
+		
+		//date = new Date()
+		
 		panelMainForm.add(boxOption);
 
 		// CRIANDO BOTAO e agrupando no PANEL
