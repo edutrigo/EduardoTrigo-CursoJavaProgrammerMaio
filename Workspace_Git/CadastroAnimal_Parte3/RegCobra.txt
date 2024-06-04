@@ -1,0 +1,5 @@
+Registro Cobra
+--------------
+Nome.......:NOME COBRA
+CAF........:200300400
+Tipo Veneno:AMARELO
