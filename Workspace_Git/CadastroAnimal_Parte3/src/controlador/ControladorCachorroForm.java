@@ -9,8 +9,6 @@ import javax.swing.JTextField;
 import entidade.Cachorro;
 import manipulaArq.ManipulaArquivo;
 
-import entidade.Cachorro;
-
 public class ControladorCachorroForm implements ActionListener {
 
 	JTextField campo_01;
