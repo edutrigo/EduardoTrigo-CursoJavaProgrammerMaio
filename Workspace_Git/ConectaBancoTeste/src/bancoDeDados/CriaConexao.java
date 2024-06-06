@@ -11,20 +11,22 @@ public class CriaConexao {
 
 	public Connection BdExemplo() {
 
-		Connection conexaoBDExemplo = null;
+		// Cria objeto do tipo "CONNECTION" = NULL
+		Connection conexaoBD = null;
 
 		try {
-			// Aponta para o driver
+			// Aponta para o driver MySQL
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// Cria a conexao
-			conexaoBDExemplo = DriverManager.getConnection(BANCO_URL, USUARIO, SENHA);
+			conexaoBD = DriverManager.getConnection(BANCO_URL, USUARIO, SENHA);
+
 			System.out.println("Conexão BD Exemplo realizada com sucesso!");
 
 		} catch (Exception e) {
 			System.out.println("Ocorreu um erro na tentativa de conexão com o DB Exemplo...");
 			System.out.println(e.getMessage());
 		}
-		return conexaoBDExemplo;
+		return conexaoBD;
 	}
 }

@@ -1,19 +1,24 @@
 package bancoDeDados;
 
-import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 public class Principal {
 
 	public static void main(String[] args) {
 
-		CriaConexao conexao = new CriaConexao();
+		DaoPessoa daoPessoa = new DaoPessoa();
+		Pessoa pessoa = new Pessoa();
 
-		Connection conexãoRecebida = conexao.BdExemplo();
+		pessoa.setCpf("001");
+		pessoa.setNome("TESTE 001");
+		pessoa.setEmail("TESTE001@gmail.com");
 
-		if (conexãoRecebida == null) {
-			System.out.println("Conexão não foi bem sucedida...");
+		boolean resultado = daoPessoa.SavePessoaBD(pessoa);
+
+		if (resultado) {
+			JOptionPane.showMessageDialog(null, "Insert OK no BD");
 		} else {
-			System.out.println("Conexão realizada com sucesso!");
+			JOptionPane.showMessageDialog(null, "Insert com ERRO...");
 		}
 	}
 }
