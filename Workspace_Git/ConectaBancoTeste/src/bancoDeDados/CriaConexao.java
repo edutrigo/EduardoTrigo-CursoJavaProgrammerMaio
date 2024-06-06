@@ -7,7 +7,7 @@ public class CriaConexao {
 	// Variaveis de conexao
 	private static String USUARIO = "root";
 	private static String SENHA = "root";
-	private static String BANCO_URL = "jdbc:mysql://localhost:3306/exemplo?useTimezone=true&serverTimezone=UTC";
+	private static String BANCO_URL = "jdbc:mysql://localhost:3306/curso_java?useTimezone=true&serverTimezone=UTC";
 
 	public Connection BdExemplo() {
 
