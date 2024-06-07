@@ -1,0 +1,11 @@
+Pasta de C:\Program Files\Java\jdk-17\bin
+--
+Pasta de C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.2\jbr\bin
+Pasta de C:\Users\edutr\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.11.v20240426-1830\jre\bin
+Pasta de C:\Users\edutr\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_22.0.1.v20240426-1149\jre\bin
+-- 
+Pasta de C:\Arquivos de Programas RFB\IRPF2024\jre\bin
+Pasta de C:\Apps\sqlDeveloper\jdk\jre\bin
+--
+Pasta de C:\oracle\dbhomeXE\jdk\						>> RENOMEEI "_EDUTRIGO"
+Pasta de C:\Program Files\Common Files\Oracle\Java\		>> RENOMEEI "_EDUTRIGO"
