@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import bancoDados.DaoCachorro;
+import bancoDados.DaoCobra;
 import entidade.Cobra;
 import manipulaArq.ManipulaArquivo;
 
@@ -43,8 +45,14 @@ public class ControladorCobraForm implements ActionListener {
 			cobra.setCaf(Integer.parseInt(campo_02.getText()));
 			cobra.setTipoVeneno(campo_03.getText());
 
+			// SALVA CACHORRO EM ARQUIVO
 			ManipulaArquivo regCobra = new ManipulaArquivo();
 			regCobra.InsereCobra(cobra);
+
+			// SALVA EM BANCO DE DADOS
+			DaoCobra daoCobra = new DaoCobra();
+			daoCobra.SaveCobraBD(cobra);
+			
 			JOptionPane.showMessageDialog(null, "Cadastro de Cobra" + "\n" + "efetuado com sucesso!");
 		}
 	}

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import bancoDados.DaoCachorro;
 import entidade.Cachorro;
 import manipulaArq.ManipulaArquivo;
 
@@ -43,8 +44,13 @@ public class ControladorCachorroForm implements ActionListener {
 			cachorro.setCaf(Integer.parseInt(campo_02.getText()));
 			cachorro.setCorPelo(campo_03.getText());
 
+			// SALVA RM ARQUIVO
 			ManipulaArquivo regCachorro = new ManipulaArquivo();
 			regCachorro.InsereCachorro(cachorro);
+
+			// SALVE EM BANCO DE DADOS
+			DaoCachorro daoCachorro = new DaoCachorro();
+			daoCachorro.SaveCachorroBD(cachorro);
 
 			JOptionPane.showMessageDialog(null, "Cadastro de Cachorro" + "\n" + "efetuado com sucesso!");
 		}
