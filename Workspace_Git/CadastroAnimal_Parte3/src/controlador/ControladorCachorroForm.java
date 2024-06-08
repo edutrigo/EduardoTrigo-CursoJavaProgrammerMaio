@@ -16,6 +16,7 @@ public class ControladorCachorroForm implements ActionListener {
 	JTextField campo_02;
 	JTextField campo_03;
 
+	//Construtor
 	public ControladorCachorroForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;

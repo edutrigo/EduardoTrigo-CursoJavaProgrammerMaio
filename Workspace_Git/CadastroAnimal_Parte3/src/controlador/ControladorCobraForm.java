@@ -17,6 +17,7 @@ public class ControladorCobraForm implements ActionListener {
 	JTextField campo_02;
 	JTextField campo_03;
 
+	//Construtor
 	public ControladorCobraForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;

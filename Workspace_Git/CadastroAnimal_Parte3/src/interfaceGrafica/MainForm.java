@@ -23,22 +23,24 @@ public class MainForm {
 		frmMainForm.add(panelMainForm);
 
 		// CRIANDO LABELS e agrupando no PANEL
-		JLabel labelOpcao1 = new JLabel("1 - CACHORRO");
+		JLabel labelOpcao1 = new JLabel("1 - CAD CACHORRO");
 		panelMainForm.add(labelOpcao1);
 
-		JLabel labelOpcao2 = new JLabel("2 - COBRA");
+		JLabel labelOpcao2 = new JLabel("2 - CAD COBRA");
 		panelMainForm.add(labelOpcao2);
 
-		JLabel labelOpcao3 = new JLabel("3 - SAIDA");
+		JLabel labelOpcao3 = new JLabel("3 - LST CACHORRO");
 		panelMainForm.add(labelOpcao3);
+
+		JLabel labelOpcao4 = new JLabel("4 - LST  COBRA");
+		panelMainForm.add(labelOpcao4);
+
+		JLabel labelOpcao5 = new JLabel("5 - SAIDA");
+		panelMainForm.add(labelOpcao5);
 
 		// CRIANDO CAIXA TEXTO PARA PERMITIR INPUT DE DADOS e agrupando no PANEL
 		JTextField boxOption = new JTextField(10);
 
-		//boxOption.setName("SET NAME"); Date d = new Date()
-		
-		//date = new Date()
-		
 		panelMainForm.add(boxOption);
 
 		// CRIANDO BOTAO e agrupando no PANEL

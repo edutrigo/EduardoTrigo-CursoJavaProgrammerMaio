@@ -2,6 +2,9 @@ package bancoDados;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import entidade.Cachorro;
 
@@ -63,5 +66,67 @@ public class DaoCachorro {
 			}
 		}
 		return salvamento;
+	}
+
+	public List<Cachorro> retQueryCachorro() {
+
+		// Instancia objeto "CriaConexao"
+		CriaConexao criaConexao = new CriaConexao();
+
+		// Cria objeto tipo "CONNECTION" = NULL
+		Connection conexaoBD = null;
+
+		// Cria objeto tipo "PreparedStatement" = NULL
+		PreparedStatement preComandoSQL = null;
+
+		// Cria objeto que irá armazenar o resultado da Query
+		ResultSet resultQuery = null;
+
+		// Cria objeto lista do objeto "Cachorro"
+		List<Cachorro> listCachorro = new ArrayList<>();
+
+		// String SQL
+		String cmdSQL = "select caf, nome, cor_pelo from animal where tipo_animal='CACHORRO'";
+
+		try {
+			// Cria a conexão e armazena no objeto "conexaoBD"
+			conexaoBD = criaConexao.BdCursoJava();
+
+			// Passo a string com o comando SQL para a variavel "preComandoSQL"
+			preComandoSQL = conexaoBD.prepareStatement(cmdSQL);
+
+			// Carregando os dados no objeto "preComandoSQL"
+			resultQuery = preComandoSQL.executeQuery();
+
+			while (resultQuery.next()) {
+
+				Cachorro cachorro = new Cachorro();
+
+				cachorro.setCaf(Integer.parseInt(resultQuery.getString("CAF")));
+				cachorro.setNome(resultQuery.getString("NOME"));
+				cachorro.setCorPelo(resultQuery.getString("COR_PELO"));
+
+				listCachorro.add(cachorro);
+			}
+
+		} catch (Exception e) {
+			System.out.println("Não foi possível listar as informações...");
+			System.out.println(e.getMessage());
+
+		} finally { // Obrigatorio
+			try {
+				if (conexaoBD != null) {
+					conexaoBD.close();
+				}
+				if (preComandoSQL != null) {
+					preComandoSQL.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possível encerrar a conexão de BD...");
+				System.out.println(e2.getMessage());
+			}
+		}
+		return listCachorro;
 	}
 }
