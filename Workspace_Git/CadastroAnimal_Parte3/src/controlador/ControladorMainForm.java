@@ -46,6 +46,10 @@ public class ControladorMainForm implements ActionListener {
 			// Lista Cachorro
 			listCachorro = daoCachorro.retQueryCachorro();
 
+			//Monta processo para apresentar o GRID do cadastro de cachorro
+			ControladorGridCachorro controladorGridCachorro = new ControladorGridCachorro();
+			controladorGridCachorro.GridCachorro(listCachorro);
+/*			
 			StringBuilder aux = new StringBuilder();
 
 			for (Cachorro cachorroReg : listCachorro) {
@@ -59,7 +63,7 @@ public class ControladorMainForm implements ActionListener {
 			}
 
 			JOptionPane.showMessageDialog(null, "FIM CADASTRO CACHORRO...");
-
+*/
 			break;
 		}
 
