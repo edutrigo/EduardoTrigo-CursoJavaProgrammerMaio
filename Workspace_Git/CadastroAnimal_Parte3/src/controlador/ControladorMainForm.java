@@ -9,7 +9,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import bancoDados.DaoCachorro;
+import bancoDados.DaoCobra;
 import entidade.Cachorro;
+import entidade.Cobra;
 import interfaceGrafica.CachorroForm;
 import interfaceGrafica.CobraForm;
 
@@ -22,11 +24,17 @@ public class ControladorMainForm implements ActionListener {
 		this.boxTextOption = boxTextOption;
 	}
 
+	// Objetos Cachorro
 	CachorroForm ScrCachorroForm = new CachorroForm();
-	CobraForm ScrCobraForm = new CobraForm();
 	DaoCachorro daoCachorro = new DaoCachorro();
 	List<Cachorro> listCachorro = new ArrayList<>();
 	Cachorro cachorro = new Cachorro();
+
+	// Objetos Cobra
+	CobraForm ScrCobraForm = new CobraForm();
+	DaoCobra daoCobra = new DaoCobra();
+	List<Cobra> listCobra = new ArrayList<>();
+	Cobra cobra = new Cobra();
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -46,29 +54,31 @@ public class ControladorMainForm implements ActionListener {
 			// Lista Cachorro
 			listCachorro = daoCachorro.retQueryCachorro();
 
-			//Monta processo para apresentar o GRID do cadastro de cachorro
+			// Monta processo para apresentar o GRID do cadastro de cachorro
 			ControladorGridCachorro controladorGridCachorro = new ControladorGridCachorro();
 			controladorGridCachorro.GridCachorro(listCachorro);
-/*			
-			StringBuilder aux = new StringBuilder();
-
-			for (Cachorro cachorroReg : listCachorro) {
-
-				aux.delete(0, 5000);
-
-				aux.append(cachorroReg.getCaf()).append("\n").append(cachorroReg.getNome()).append("\n")
-						.append(cachorroReg.getCorPelo());
-
-				JOptionPane.showMessageDialog(null, aux.toString());
-			}
-
-			JOptionPane.showMessageDialog(null, "FIM CADASTRO CACHORRO...");
-*/
+			/*
+			 * StringBuilder aux = new StringBuilder();
+			 * 
+			 * for (Cachorro cachorroReg : listCachorro) {
+			 * 
+			 * aux.delete(0, 5000);
+			 * 
+			 * aux.append(cachorroReg.getCaf()).append("\n").append(cachorroReg.getNome()).
+			 * append("\n") .append(cachorroReg.getCorPelo());
+			 * 
+			 * JOptionPane.showMessageDialog(null, aux.toString()); }
+			 * 
+			 * JOptionPane.showMessageDialog(null, "FIM CADASTRO CACHORRO...");
+			 */
 			break;
 		}
 
 		case "4": {
 			// Lista Cobra
+			listCobra = daoCobra.retQueryCobra();
+			ControladorGridCobra controladorGridCobra = new ControladorGridCobra();
+			controladorGridCobra.GridCobra(listCobra);
 			break;
 		}
 

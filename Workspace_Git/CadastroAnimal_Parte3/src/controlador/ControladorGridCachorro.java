@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Dimension;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -48,11 +49,16 @@ public class ControladorGridCachorro {
 		JTable gridCachorro = new JTable(gridString, nomeColunas);
 
 		// Configura a TABELA posição(x,y) e o tamanho(width/height) -- largura / altura
-		gridCachorro.setBounds(1, 1, 400, 50);
+		// gridCachorro.setBounds(1, 1, 400, 400);
+
+		// gridCachorro.setAutoscrolls(true);
+		// gridCachorro.setSize(400, 200);
 
 		// Cria objeto visual(GRID) para apresentar na tela
 		JScrollPane scrollPaneGridCachorro = new JScrollPane(gridCachorro);
 
+		scrollPaneGridCachorro.setPreferredSize(new Dimension(450, 185));
+		
 		// CRIA um PANEL
 		JPanel panelGridCachorro = new JPanel();
 
