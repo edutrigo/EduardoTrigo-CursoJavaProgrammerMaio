@@ -52,9 +52,12 @@ public class ControladorMainForm implements ActionListener {
 		}
 		case "3": {
 			// Lista Cachorro
+
+			// Alimenta objeto "listCachorro" com o resultado do método "retQueryCachorro"
 			listCachorro = daoCachorro.retQueryCachorro();
 
-			// Monta processo para apresentar o GRID do cadastro de cachorro
+			// Cria objeto "controladorGridCachorro" para poder usar o método "GridCachorro" e passar o conteúdo do "listCachorro"
+			// No método "GridCachorro" irá alimentar um JTable e montar a tela
 			ControladorGridCachorro controladorGridCachorro = new ControladorGridCachorro();
 			controladorGridCachorro.GridCachorro(listCachorro);
 			/*
@@ -76,7 +79,12 @@ public class ControladorMainForm implements ActionListener {
 
 		case "4": {
 			// Lista Cobra
+
+			// Alimenta objeto "listCobra" com o resultado do método "retQueryCobra"
 			listCobra = daoCobra.retQueryCobra();
+
+			// Cria objeto "controladorGridCobra" para poder usar o método "GridCobra" e passar o conteúdo do "listCobra"
+			// No método "GridCobra" irá alimentar um JTable e montar a tela
 			ControladorGridCobra controladorGridCobra = new ControladorGridCobra();
 			controladorGridCobra.GridCobra(listCobra);
 			break;
