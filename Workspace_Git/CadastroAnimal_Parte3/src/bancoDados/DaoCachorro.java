@@ -12,7 +12,7 @@ import entidade.Cachorro;
 public class DaoCachorro {
 
 	// Salva registro de cachorro no BD
-	public boolean SaveCachorroBD(Cachorro cachorro) {
+	public boolean saveCachorroBD(Cachorro cachorro) {
 		boolean salvamento = false;
 
 		// Instancia objeto "CriaConexao"

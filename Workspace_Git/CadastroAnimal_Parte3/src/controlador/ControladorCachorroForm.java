@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import bancoDados.DaoCachorro;
 import entidade.Cachorro;
 import manipulaArq.ManipulaArquivo;
+import repositorio.CachorroRepositorioImplemetacao;
 
 public class ControladorCachorroForm implements ActionListener {
 
@@ -16,7 +16,9 @@ public class ControladorCachorroForm implements ActionListener {
 	JTextField campo_02;
 	JTextField campo_03;
 
-	//Construtor
+	CachorroRepositorioImplemetacao cachorroRepositorio = new CachorroRepositorioImplemetacao();
+
+	// Construtor
 	public ControladorCachorroForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;
@@ -49,9 +51,8 @@ public class ControladorCachorroForm implements ActionListener {
 			ManipulaArquivo regCachorro = new ManipulaArquivo();
 			regCachorro.InsereCachorro(cachorro);
 
-			// SALVE EM BANCO DE DADOS
-			DaoCachorro daoCachorro = new DaoCachorro();
-			daoCachorro.SaveCachorroBD(cachorro);
+			// SALVE EM BANCO DE DADOS - ATRAVES DA INTERFACE
+			cachorroRepositorio.saveCachorroBD(cachorro);
 
 			JOptionPane.showMessageDialog(null, "Cadastro de Cachorro" + "\n" + "efetuado com sucesso!");
 		}

@@ -6,10 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import bancoDados.DaoCachorro;
-import bancoDados.DaoCobra;
 import entidade.Cobra;
 import manipulaArq.ManipulaArquivo;
+import repositorio.CobraRepositorioImplemetacao;
 
 public class ControladorCobraForm implements ActionListener {
 
@@ -17,7 +16,9 @@ public class ControladorCobraForm implements ActionListener {
 	JTextField campo_02;
 	JTextField campo_03;
 
-	//Construtor
+	CobraRepositorioImplemetacao cobraRepositorioImplemetacao = new CobraRepositorioImplemetacao();
+
+	// Construtor
 	public ControladorCobraForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;
@@ -46,14 +47,13 @@ public class ControladorCobraForm implements ActionListener {
 			cobra.setCaf(Integer.parseInt(campo_02.getText()));
 			cobra.setTipoVeneno(campo_03.getText());
 
-			// SALVA CACHORRO EM ARQUIVO
+			// SALVA COBRA EM ARQUIVO
 			ManipulaArquivo regCobra = new ManipulaArquivo();
 			regCobra.InsereCobra(cobra);
 
-			// SALVA EM BANCO DE DADOS
-			DaoCobra daoCobra = new DaoCobra();
-			daoCobra.SaveCobraBD(cobra);
-			
+			// SALVA EM BANCO DE DADOS - USANDO INTERFACE
+			cobraRepositorioImplemetacao.saveCobraBD(cobra);
+
 			JOptionPane.showMessageDialog(null, "Cadastro de Cobra" + "\n" + "efetuado com sucesso!");
 		}
 	}
