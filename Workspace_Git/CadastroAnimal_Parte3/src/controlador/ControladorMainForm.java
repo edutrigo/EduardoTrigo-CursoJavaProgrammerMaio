@@ -13,7 +13,11 @@ import bancoDados.DaoCobra;
 import entidade.Cachorro;
 import entidade.Cobra;
 import interfaceGrafica.CachorroForm;
+import interfaceGrafica.CachorroFormDelete;
 import interfaceGrafica.CobraForm;
+import interfaceGrafica.CobraFormDelete;
+import repositorio.CachorroRepositorioImplementacao;
+import repositorio.CobraRepositorioImplementacao;
 
 public class ControladorMainForm implements ActionListener {
 
@@ -53,17 +57,18 @@ public class ControladorMainForm implements ActionListener {
 		case "3": {
 			// Lista Cachorro
 
-			// Alimenta objeto "listCachorro" com o resultado do método "retQueryCachorro"
+			// Alimenta objeto "listCobra" com o resultado do método "retQueryCachorro"
 			listCachorro = daoCachorro.retQueryCachorro();
 
-			// Cria objeto "controladorGridCachorro" para poder usar o método "GridCachorro" e passar o conteúdo do "listCachorro"
+			// Cria objeto "controladorGridCachorro" para poder usar o método "GridCachorro"
+			// e passar o conteúdo do "listCobra"
 			// No método "GridCachorro" irá alimentar um JTable e montar a tela
 			ControladorGridCachorro controladorGridCachorro = new ControladorGridCachorro();
 			controladorGridCachorro.GridCachorro(listCachorro);
 			/*
 			 * StringBuilder aux = new StringBuilder();
 			 * 
-			 * for (Cachorro cachorroReg : listCachorro) {
+			 * for (Cachorro cachorroReg : listCobra) {
 			 * 
 			 * aux.delete(0, 5000);
 			 * 
@@ -81,9 +86,11 @@ public class ControladorMainForm implements ActionListener {
 			// Lista Cobra
 
 			// Alimenta objeto "listCobra" com o resultado do método "retQueryCobra"
+
 			listCobra = daoCobra.retQueryCobra();
 
-			// Cria objeto "controladorGridCobra" para poder usar o método "GridCobra" e passar o conteúdo do "listCobra"
+			// Cria objeto "controladorGridCobra" para poder usar o método "GridCobra" e
+			// passar o conteúdo do "listCobra"
 			// No método "GridCobra" irá alimentar um JTable e montar a tela
 			ControladorGridCobra controladorGridCobra = new ControladorGridCobra();
 			controladorGridCobra.GridCobra(listCobra);
@@ -91,11 +98,39 @@ public class ControladorMainForm implements ActionListener {
 		}
 
 		case "5": {
+			// Exclui Cachorro
+			CachorroRepositorioImplementacao cachorroRepositorioImplementacao = new CachorroRepositorioImplementacao();
+			
+			listCachorro = cachorroRepositorioImplementacao.retQueryCachorro();
+
+			CachorroFormDelete cachorroFormDelete = new CachorroFormDelete();
+
+			cachorroFormDelete.GridCachorro(listCachorro);
+			break;
+		}
+
+		case "6": {
+			// Exclui Cobra
+			CobraRepositorioImplementacao cobraRepositorioImplementacao = new CobraRepositorioImplementacao();
+			
+			listCobra = cobraRepositorioImplementacao.retQueryCobra();
+
+			CobraFormDelete cobraFormDelete = new CobraFormDelete();
+
+			cobraFormDelete.GridCobra(listCobra);
+			break;
+		}
+
+		case "X": {
+			System.exit(0);
+			break;
+		}
+		case "x": {
 			System.exit(0);
 			break;
 		}
 		default:
-			JOptionPane.showMessageDialog(null, "Somente as opções [1-5] são Válidas...");
+			JOptionPane.showMessageDialog(null, "Somente as opções [1-5] ou 'X' são Válidas...");
 			boxTextOption.setText(null);
 		}
 	}

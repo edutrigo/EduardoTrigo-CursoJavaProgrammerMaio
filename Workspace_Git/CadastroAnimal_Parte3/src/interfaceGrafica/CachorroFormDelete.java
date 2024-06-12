@@ -1,16 +1,19 @@
-package controlador;
+package interfaceGrafica;
 
 import java.awt.Dimension;
+import java.awt.TextField;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import controlador.ControladorCachorroFormDeletar;
 import entidade.Cachorro;
 
-public class ControladorGridCachorro {
+public class CachorroFormDelete {
 
 	public void GridCachorro(List<Cachorro> listaCahorro) {
 
@@ -40,7 +43,7 @@ public class ControladorGridCachorro {
 
 		// Cria FRAME e faz o dimensionamento do mesmo
 		JFrame frameGridCachorro = new JFrame();
-		frameGridCachorro.setSize(500, 250);
+		frameGridCachorro.setSize(500, 300);
 
 		// Monta a "linha cabeçalho" do GRID
 		String nomeColunas[] = { "CAF", "NOME", "COR PELO" };
@@ -55,7 +58,7 @@ public class ControladorGridCachorro {
 		JScrollPane scrollPaneGridCachorro = new JScrollPane(gridCachorro);
 
 		scrollPaneGridCachorro.setPreferredSize(new Dimension(450, 185));
-		
+
 		// CRIA um PANEL
 		JPanel panelGridCachorro = new JPanel();
 
@@ -65,6 +68,17 @@ public class ControladorGridCachorro {
 		// Adiciona o PANEL ao FRAME
 		frameGridCachorro.add(panelGridCachorro);
 
+		// Cria campo CAF para entrar como parâmetro
+		TextField caf = new TextField(10);
+		panelGridCachorro.add(caf);
+
+		// Cria bot]ao DELETAR
+		JButton botaoDeletar = new JButton("Deletar");
+		panelGridCachorro.add(botaoDeletar);
+
+		ControladorCachorroFormDeletar controladorCachorroFormDeletar = new ControladorCachorroFormDeletar(caf, frameGridCachorro);
+		botaoDeletar.addActionListener(controladorCachorroFormDeletar);
+		
 		// Deixa o FRAME visivel
 		frameGridCachorro.setVisible(true);
 	}

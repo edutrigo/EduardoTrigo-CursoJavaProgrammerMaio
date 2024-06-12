@@ -13,7 +13,7 @@ public class DaoCobra {
 
 	// Salva registro de Cobra no BD
 	public boolean saveCobraBD(Cobra cobra) {
-		boolean salvamento = false;
+		boolean confirmaProcesso = false;
 
 		// Instancia objeto "CriaConexao"
 		CriaConexao criaConexao = new CriaConexao();
@@ -45,7 +45,7 @@ public class DaoCobra {
 
 			System.out.println("Dados COBRA registrado com sucesso!");
 
-			salvamento = true;
+			confirmaProcesso = true;
 
 		} catch (Exception e) {
 			System.out.println("Não foi possível salvar as informações...");
@@ -65,7 +65,62 @@ public class DaoCobra {
 				System.out.println(e2.getMessage());
 			}
 		}
-		return salvamento;
+		return confirmaProcesso;
+	}
+
+	// Excluir registro de Cobra no BD
+	public boolean delCobraBD(String caf) {
+		boolean confirmaProcesso = false;
+
+		// Instancia objeto "CriaConexao"
+		CriaConexao criaConexao = new CriaConexao();
+
+		// Cria objeto tipo "CONNECTION" = NULL
+		Connection conexaoBD = null;
+
+		// Cria objeto tipo "PreparedStatement" = NULL
+		PreparedStatement preComandoSQL = null;
+
+		// String SQL
+		String cmdSQL = "delete from animal where tipo_animal = ? and caf = ?";
+
+		try {
+			// Cria a conexão e armazena no objeto "conexaoBD"
+			conexaoBD = criaConexao.BdCursoJava();
+
+			// Passo a string com o comando SQL para a variavel "preComandoSQL"
+			preComandoSQL = conexaoBD.prepareStatement(cmdSQL);
+
+			// Alimento as colunas
+			preComandoSQL.setString(1, "COBRA");
+			preComandoSQL.setString(2, caf);
+
+			// Passa o comando para o BD e também faz o COMMIT
+			preComandoSQL.execute();
+
+			System.out.println("Dados COBRA excluído com sucesso!");
+
+			confirmaProcesso = true;
+
+		} catch (Exception e) {
+			System.out.println("Não foi possível excluir as informações...");
+			System.out.println(e.getMessage());
+
+		} finally { // Obrigatorio
+			try {
+				if (conexaoBD != null) {
+					conexaoBD.close();
+				}
+				if (preComandoSQL != null) {
+					preComandoSQL.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possível encerrar a conexão de BD...");
+				System.out.println(e2.getMessage());
+			}
+		}
+		return confirmaProcesso;
 	}
 
 	public List<Cobra> retQueryCobra() {

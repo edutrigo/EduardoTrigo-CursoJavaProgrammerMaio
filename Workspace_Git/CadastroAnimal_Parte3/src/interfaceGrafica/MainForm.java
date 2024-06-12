@@ -14,7 +14,7 @@ public class MainForm {
 
 		// CRIANDO FRAME
 		JFrame frmMainForm = new JFrame();
-		frmMainForm.setSize(130, 200);
+		frmMainForm.setSize(130, 300);
 
 		// CRIANDO PANEL
 		JPanel panelMainForm = new JPanel();
@@ -35,8 +35,14 @@ public class MainForm {
 		JLabel labelOpcao4 = new JLabel("4 - LST  COBRA");
 		panelMainForm.add(labelOpcao4);
 
-		JLabel labelOpcao5 = new JLabel("5 - SAIDA");
+		JLabel labelOpcao5 = new JLabel("5 - DEL CACHORRO");
 		panelMainForm.add(labelOpcao5);
+
+		JLabel labelOpcao6 = new JLabel("6 - DEL COBRA");
+		panelMainForm.add(labelOpcao6);
+		
+		JLabel labelOpcaoX = new JLabel("X - SAIDA");
+		panelMainForm.add(labelOpcaoX);
 
 		// CRIANDO CAIXA TEXTO PARA PERMITIR INPUT DE DADOS e agrupando no PANEL
 		JTextField boxOption = new JTextField(10);

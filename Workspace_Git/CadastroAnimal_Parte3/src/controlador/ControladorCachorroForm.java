@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 import entidade.Cachorro;
 import manipulaArq.ManipulaArquivo;
-import repositorio.CachorroRepositorioImplemetacao;
+import repositorio.CachorroRepositorioImplementacao;
 
 public class ControladorCachorroForm implements ActionListener {
 
@@ -16,7 +16,7 @@ public class ControladorCachorroForm implements ActionListener {
 	JTextField campo_02;
 	JTextField campo_03;
 
-	CachorroRepositorioImplemetacao cachorroRepositorio = new CachorroRepositorioImplemetacao();
+	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
 
 	// Construtor
 	public ControladorCachorroForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
