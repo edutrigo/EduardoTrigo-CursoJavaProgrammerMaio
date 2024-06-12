@@ -2,7 +2,9 @@ package repositorio;
 
 import java.util.List;
 
+import bancoDados.DaoCachorro;
 import bancoDados.DaoCobra;
+import entidade.Cachorro;
 import entidade.Cobra;
 
 public class CobraRepositorioImplementacao implements CobraRepositorio {
@@ -18,7 +20,12 @@ public class CobraRepositorioImplementacao implements CobraRepositorio {
 	public boolean delCobraBD(String caf) {
 		DaoCobra daoCobra = new DaoCobra();
 
-		return daoCobra.delCobraBD(caf);
+		for (Cobra cobra : retQueryCobra()) {
+			if (cobra.getCaf().toString().equals(caf)) {
+				return daoCobra.delCobraBD(caf);
+			}
+		}
+		return false;
 	}
 
 	@Override
