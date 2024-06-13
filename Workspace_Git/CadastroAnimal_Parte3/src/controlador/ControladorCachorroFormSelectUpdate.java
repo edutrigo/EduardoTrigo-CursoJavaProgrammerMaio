@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import entidade.Cachorro;
 import repositorio.CachorroRepositorioImplementacao;
 
-public class ControladorCachorroFormUpdate implements ActionListener {
+public class ControladorCachorroFormSelectUpdate implements ActionListener {
 
 	TextField campo_01; // CAF
 	JFrame frameTela;
@@ -18,7 +18,7 @@ public class ControladorCachorroFormUpdate implements ActionListener {
 	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
 
 	// Construtor
-	public ControladorCachorroFormUpdate(TextField campo_01, JFrame frameTela) {
+	public ControladorCachorroFormSelectUpdate(TextField campo_01, JFrame frameTela) {
 		this.campo_01 = campo_01; // CAF
 		this.frameTela = frameTela;
 	}
@@ -31,7 +31,7 @@ public class ControladorCachorroFormUpdate implements ActionListener {
 		cachorro = cachorroRepositorio.buscaCachorroPorCaf(campo_01.getText());
 
 		if (cachorro == null) {
-			JOptionPane.showMessageDialog(null, "CAF para Cachorro não encontrado! > " + campo_01.getText() );
+			JOptionPane.showMessageDialog(null, "CAF para Cachorro não encontrado! > " + campo_01.getText());
 		} else {
 
 			frameTela.setVisible(false);

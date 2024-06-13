@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import controlador.ControladorCachorroFormUpdate;
+import controlador.ControladorCachorroFormSelectUpdate;
 import entidade.Cachorro;
 
 public class CachorroFormSelectUpdate {
@@ -75,7 +75,7 @@ public class CachorroFormSelectUpdate {
 		JButton botaoUpdate = new JButton("Atualizar");
 		panelGridCachorro.add(botaoUpdate);
 
-		ControladorCachorroFormUpdate controladorCachorroFormUpdate = new ControladorCachorroFormUpdate(caf,
+		ControladorCachorroFormSelectUpdate controladorCachorroFormUpdate = new ControladorCachorroFormSelectUpdate(caf,
 				frameGridCachorro);
 
 		botaoUpdate.addActionListener(controladorCachorroFormUpdate);
