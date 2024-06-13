@@ -40,7 +40,13 @@ public class MainForm {
 
 		JLabel labelOpcao6 = new JLabel("6 - DEL COBRA");
 		panelMainForm.add(labelOpcao6);
-		
+
+		JLabel labelOpcao7 = new JLabel("7 - ATU CACHORRO");
+		panelMainForm.add(labelOpcao7);
+
+		JLabel labelOpcao8 = new JLabel("8 - ATU COBRA");
+		panelMainForm.add(labelOpcao8);
+
 		JLabel labelOpcaoX = new JLabel("X - SAIDA");
 		panelMainForm.add(labelOpcaoX);
 

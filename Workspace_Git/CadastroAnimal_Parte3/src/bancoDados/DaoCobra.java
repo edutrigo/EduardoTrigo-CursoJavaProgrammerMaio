@@ -11,7 +11,7 @@ import entidade.Cobra;
 // DAO - Data Access Object
 public class DaoCobra {
 
-	// Salva registro de Cobra no BD
+	// INCLUIR
 	public boolean saveCobraBD(Cobra cobra) {
 		boolean confirmaProcesso = false;
 
@@ -68,7 +68,7 @@ public class DaoCobra {
 		return confirmaProcesso;
 	}
 
-	// Excluir registro de Cobra no BD
+	// EXCLUIR
 	public boolean delCobraBD(String caf) {
 		boolean confirmaProcesso = false;
 
@@ -123,6 +123,7 @@ public class DaoCobra {
 		return confirmaProcesso;
 	}
 
+	// CONSULTAR
 	public List<Cobra> retQueryCobra() {
 
 		// Instancia objeto "CriaConexao"
@@ -183,6 +184,63 @@ public class DaoCobra {
 			}
 		}
 		return listCobra;
+	}
+
+	// ATUALIZAR
+	public boolean updateCobraBD(Cobra cobra) {
+		boolean confirmaProcesso = false;
+
+		// Instancia objeto "CriaConexao"
+		CriaConexao criaConexao = new CriaConexao();
+
+		// Cria objeto tipo "CONNECTION" = NULL
+		Connection conexaoBD = null;
+
+		// Cria objeto tipo "PreparedStatement" = NULL
+		PreparedStatement preComandoSQL = null;
+
+		// String SQL
+		String cmdSQL = "update from animal set nome = ?, tipo_veneno = ? where tipo_animal = ? and caf = ?";
+
+		try {
+			// Cria a conexão e armazena no objeto "conexaoBD"
+			conexaoBD = criaConexao.BdCursoJava();
+
+			// Passo a string com o comando SQL para a variavel "preComandoSQL"
+			preComandoSQL = conexaoBD.prepareStatement(cmdSQL);
+
+			// Alimento as colunas
+			preComandoSQL.setString(1, cobra.getNome());
+			preComandoSQL.setString(2, cobra.getTipoVeneno());
+			preComandoSQL.setString(3, "COBRA");
+			preComandoSQL.setString(4, cobra.getCaf().toString());
+
+			// Passa o comando para o BD e também faz o COMMIT
+			preComandoSQL.execute();
+
+			System.out.println("Dados COBRA atualizado com sucesso!");
+
+			confirmaProcesso = true;
+
+		} catch (Exception e) {
+			System.out.println("Não foi possível atualizar as informações...");
+			System.out.println(e.getMessage());
+
+		} finally { // Obrigatorio
+			try {
+				if (conexaoBD != null) {
+					conexaoBD.close();
+				}
+				if (preComandoSQL != null) {
+					preComandoSQL.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possível encerrar a conexão de BD...");
+				System.out.println(e2.getMessage());
+			}
+		}
+		return confirmaProcesso;
 	}
 
 }

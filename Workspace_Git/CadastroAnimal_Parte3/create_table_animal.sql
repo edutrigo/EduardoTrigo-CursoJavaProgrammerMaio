@@ -10,7 +10,7 @@ create table Animal ( tipo_animal varchar(10)
 insert into Animal values ( "CACHORRO", 01, "CAO 01", "COR PELO 1", NULL );
 insert into Animal values ( "CACHORRO", 02, "CAO 02", "COR PELO 2", NULL );
 insert into Animal values ( "CACHORRO", 03, "CAO 03", "COR PELO 3", NULL );
-insert into Animal values ( "CACHORRO", 04, "CAO 04", "COR PELO 3", NULL );
+insert into Animal values ( "CACHORRO", 04, "CAO 04", "COR PELO 4", NULL );
 --
 insert into Animal values ( "COBRA", 01, "COBRA 01", NULL, "VENENO 01" );
 insert into Animal values ( "COBRA", 02, "COBRA 02", NULL, "VENENO 02" );

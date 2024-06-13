@@ -14,6 +14,7 @@ import entidade.Cachorro;
 import entidade.Cobra;
 import interfaceGrafica.CachorroForm;
 import interfaceGrafica.CachorroFormDelete;
+import interfaceGrafica.CachorroFormSelectUpdate;
 import interfaceGrafica.CobraForm;
 import interfaceGrafica.CobraFormDelete;
 import repositorio.CachorroRepositorioImplementacao;
@@ -100,7 +101,7 @@ public class ControladorMainForm implements ActionListener {
 		case "5": {
 			// Exclui Cachorro
 			CachorroRepositorioImplementacao cachorroRepositorioImplementacao = new CachorroRepositorioImplementacao();
-			
+
 			listCachorro = cachorroRepositorioImplementacao.retQueryCachorro();
 
 			CachorroFormDelete cachorroFormDelete = new CachorroFormDelete();
@@ -112,12 +113,29 @@ public class ControladorMainForm implements ActionListener {
 		case "6": {
 			// Exclui Cobra
 			CobraRepositorioImplementacao cobraRepositorioImplementacao = new CobraRepositorioImplementacao();
-			
+
 			listCobra = cobraRepositorioImplementacao.retQueryCobra();
 
 			CobraFormDelete cobraFormDelete = new CobraFormDelete();
 
 			cobraFormDelete.GridCobra(listCobra);
+			break;
+		}
+
+		case "7": {
+			// ALTERA CACHORRO
+			CachorroRepositorioImplementacao cachorroRepositorioImplementacao = new CachorroRepositorioImplementacao();
+
+			listCachorro = cachorroRepositorioImplementacao.retQueryCachorro();
+
+			CachorroFormSelectUpdate cachorroFormSelectUpdate = new CachorroFormSelectUpdate();
+
+			cachorroFormSelectUpdate.GridCachorro(listCachorro);
+			break;
+		}
+
+		case "8": {
+			// ALTERA COBRA
 			break;
 		}
 

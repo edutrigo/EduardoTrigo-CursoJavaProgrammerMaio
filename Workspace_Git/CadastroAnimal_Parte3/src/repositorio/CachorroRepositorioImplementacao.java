@@ -21,6 +21,7 @@ public class CachorroRepositorioImplementacao implements CachorroRepositorio {
 		return daoCachorro.retQueryCachorro();
 	}
 
+	@Override
 	public boolean delCachorroBD(String caf) {
 		DaoCachorro daoCachorro = new DaoCachorro();
 
@@ -32,4 +33,19 @@ public class CachorroRepositorioImplementacao implements CachorroRepositorio {
 		return false;
 	}
 
+	@Override
+	public boolean updateCachorroBD(Cachorro cachorro) {
+		DaoCachorro daoCachorro = new DaoCachorro();
+		return daoCachorro.updateCachorroBD(cachorro);
+	}
+
+	@Override
+	public Cachorro buscaCachorroPorCaf(String caf) {
+		for (Cachorro cachorro : retQueryCachorro()) {
+			if (cachorro.getCaf().toString().equals(caf)) {
+				return cachorro;
+			}
+		}
+		return null;
+	}
 }

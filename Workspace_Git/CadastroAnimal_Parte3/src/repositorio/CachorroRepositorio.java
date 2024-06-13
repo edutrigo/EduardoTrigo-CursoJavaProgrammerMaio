@@ -13,4 +13,8 @@ public interface CachorroRepositorio {
 	public List<Cachorro> retQueryCachorro();
 
 	public boolean delCachorroBD(String caf);
+
+	public boolean updateCachorroBD(Cachorro cachorro);
+
+	public Cachorro buscaCachorroPorCaf(String cpf);
 }
