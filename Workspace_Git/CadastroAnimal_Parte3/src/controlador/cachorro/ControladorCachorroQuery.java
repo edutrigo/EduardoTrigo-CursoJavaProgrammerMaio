@@ -1,4 +1,4 @@
-package controlador;
+package controlador.cachorro;
 
 import java.awt.Dimension;
 import java.util.List;
@@ -10,7 +10,11 @@ import javax.swing.JTable;
 
 import entidade.Cachorro;
 
-public class ControladorGridCachorro {
+public class ControladorCachorroQuery {
+
+	//
+	// DENTRO DESTE CONTROLADOR JA TEM A TELA TAMBEM
+	//
 
 	public void GridCachorro(List<Cachorro> listaCahorro) {
 
@@ -55,7 +59,7 @@ public class ControladorGridCachorro {
 		JScrollPane scrollPaneGridCachorro = new JScrollPane(gridCachorro);
 
 		scrollPaneGridCachorro.setPreferredSize(new Dimension(450, 185));
-		
+
 		// CRIA um PANEL
 		JPanel panelGridCachorro = new JPanel();
 

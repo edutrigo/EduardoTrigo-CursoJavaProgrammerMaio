@@ -1,4 +1,4 @@
-package controlador;
+package controlador.cobra;
 
 import java.awt.Dimension;
 import java.util.List;
@@ -10,7 +10,11 @@ import javax.swing.JTable;
 
 import entidade.Cobra;
 
-public class ControladorGridCobra {
+public class ControladorCobraQuery {
+
+	//
+	// DENTRO DESTE CONTROLADOR JA TEM A TELA TAMBEM
+	//
 
 	public void GridCobra(List<Cobra> listaCobra) {
 

@@ -1,4 +1,4 @@
-package controlador;
+package controlador.cobra;
 
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -7,15 +7,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import repositorio.CobraRepositorioImplementacao;
+import repositorio.cobra.CobraRepositorioImplementacao;
 
-public class ControladorCobraFormDeletar implements ActionListener {
+public class ControladorCobraFormDelete implements ActionListener {
 
 	TextField cafRecebido;
 	JFrame frameDeletar;
 	CobraRepositorioImplementacao cobraRepositorioImplementacao = new CobraRepositorioImplementacao();
 
-	public ControladorCobraFormDeletar(TextField cafRecebido, JFrame frameDeletar) {
+	public ControladorCobraFormDelete(TextField cafRecebido, JFrame frameDeletar) {
 		this.cafRecebido = cafRecebido;
 		this.frameDeletar = frameDeletar;
 	}

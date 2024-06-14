@@ -1,4 +1,4 @@
-package bancoDados;
+package bancoDados.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,13 +6,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import entidade.Cachorro;
+import bancoDados.config.CriaConexao;
+import entidade.Cobra;
 
 // DAO - Data Access Object
-public class DaoCachorro {
+public class DaoCobra {
 
 	// INCLUIR
-	public boolean saveCachorroBD(Cachorro cachorro) {
+	public boolean saveCobraBD(Cobra cobra) {
 		boolean confirmaProcesso = false;
 
 		// Instancia objeto "CriaConexao"
@@ -25,7 +26,7 @@ public class DaoCachorro {
 		PreparedStatement preComandoSQL = null;
 
 		// String SQL
-		String cmdSQL = "insert into animal (tipo_animal, caf, nome, cor_pelo) values (?, ?, ?, ?)";
+		String cmdSQL = "insert into animal (tipo_animal, caf, nome, tipo_veneno) values (?, ?, ?, ?)";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -35,15 +36,15 @@ public class DaoCachorro {
 			preComandoSQL = conexaoBD.prepareStatement(cmdSQL);
 
 			// Alimento as colunas
-			preComandoSQL.setString(1, "CACHORRO");
-			preComandoSQL.setString(2, cachorro.getCaf().toString());
-			preComandoSQL.setString(3, cachorro.getNome());
-			preComandoSQL.setString(4, cachorro.getCorPelo());
+			preComandoSQL.setString(1, "COBRA");
+			preComandoSQL.setString(2, cobra.getCaf().toString());
+			preComandoSQL.setString(3, cobra.getNome());
+			preComandoSQL.setString(4, cobra.getTipoVeneno());
 
 			// Passa o comando para o BD e também faz o COMMIT
 			preComandoSQL.execute();
 
-			System.out.println("Dados CACHORRO registrado com sucesso!");
+			System.out.println("Dados COBRA registrado com sucesso!");
 
 			confirmaProcesso = true;
 
@@ -69,7 +70,7 @@ public class DaoCachorro {
 	}
 
 	// EXCLUIR
-	public boolean delCachorroBD(String caf) {
+	public boolean delCobraBD(String caf) {
 		boolean confirmaProcesso = false;
 
 		// Instancia objeto "CriaConexao"
@@ -92,13 +93,13 @@ public class DaoCachorro {
 			preComandoSQL = conexaoBD.prepareStatement(cmdSQL);
 
 			// Alimento as colunas
-			preComandoSQL.setString(1, "CACHORRO");
+			preComandoSQL.setString(1, "COBRA");
 			preComandoSQL.setString(2, caf);
 
 			// Passa o comando para o BD e também faz o COMMIT
 			preComandoSQL.execute();
 
-			System.out.println("Dados CACHORRO excluído com sucesso!");
+			System.out.println("Dados COBRA excluído com sucesso!");
 
 			confirmaProcesso = true;
 
@@ -124,7 +125,7 @@ public class DaoCachorro {
 	}
 
 	// CONSULTAR
-	public List<Cachorro> retQueryCachorro() {
+	public List<Cobra> retQueryCobra() {
 
 		// Instancia objeto "CriaConexao"
 		CriaConexao criaConexao = new CriaConexao();
@@ -138,11 +139,11 @@ public class DaoCachorro {
 		// Cria objeto que irá armazenar o resultado da Query
 		ResultSet resultQuery = null;
 
-		// Cria objeto lista do objeto "Cachorro"
-		List<Cachorro> listCachorro = new ArrayList<>();
+		// Cria objeto lista do objeto "Cobra"
+		List<Cobra> listCobra = new ArrayList<>();
 
 		// String SQL
-		String cmdSQL = "select caf, nome, cor_pelo from animal where tipo_animal='CACHORRO'";
+		String cmdSQL = "select caf, nome, tipo_veneno from animal where tipo_animal='COBRA'";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -156,13 +157,13 @@ public class DaoCachorro {
 
 			while (resultQuery.next()) {
 
-				Cachorro cachorro = new Cachorro();
+				Cobra Cobra = new Cobra();
 
-				cachorro.setCaf(Integer.parseInt(resultQuery.getString("CAF")));
-				cachorro.setNome(resultQuery.getString("NOME"));
-				cachorro.setCorPelo(resultQuery.getString("COR_PELO"));
+				Cobra.setCaf(Integer.parseInt(resultQuery.getString("CAF")));
+				Cobra.setNome(resultQuery.getString("NOME"));
+				Cobra.setTipoVeneno(resultQuery.getString("TIPO_VENENO"));
 
-				listCachorro.add(cachorro);
+				listCobra.add(Cobra);
 			}
 
 		} catch (Exception e) {
@@ -183,11 +184,11 @@ public class DaoCachorro {
 				System.out.println(e2.getMessage());
 			}
 		}
-		return listCachorro;
+		return listCobra;
 	}
 
 	// ATUALIZAR
-	public boolean updateCachorroBD(Cachorro cachorro) {
+	public boolean updateCobraBD(Cobra cobra) {
 		boolean confirmaProcesso = false;
 
 		// Instancia objeto "CriaConexao"
@@ -200,7 +201,7 @@ public class DaoCachorro {
 		PreparedStatement preComandoSQL = null;
 
 		// String SQL
-		String cmdSQL = "update from animal set nome = ?, cor_pelo = ? where tipo_animal = ? and caf = ?";
+		String cmdSQL = "update from animal set nome = ?, tipo_veneno = ? where tipo_animal = ? and caf = ?";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -210,15 +211,15 @@ public class DaoCachorro {
 			preComandoSQL = conexaoBD.prepareStatement(cmdSQL);
 
 			// Alimento as colunas
-			preComandoSQL.setString(1, cachorro.getNome());
-			preComandoSQL.setString(2, cachorro.getCorPelo());
-			preComandoSQL.setString(3, "CACHORRO");
-			preComandoSQL.setString(4, cachorro.getCaf().toString());
+			preComandoSQL.setString(1, cobra.getNome());
+			preComandoSQL.setString(2, cobra.getTipoVeneno());
+			preComandoSQL.setString(3, "COBRA");
+			preComandoSQL.setString(4, cobra.getCaf().toString());
 
 			// Passa o comando para o BD e também faz o COMMIT
 			preComandoSQL.execute();
 
-			System.out.println("Dados CACHORRO atualizado com sucesso!");
+			System.out.println("Dados COBRA atualizado com sucesso!");
 
 			confirmaProcesso = true;
 
@@ -242,4 +243,5 @@ public class DaoCachorro {
 		}
 		return confirmaProcesso;
 	}
+
 }

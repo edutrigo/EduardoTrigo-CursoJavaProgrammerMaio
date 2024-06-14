@@ -1,8 +1,8 @@
-package repositorio;
+package repositorio.cachorro;
 
 import java.util.List;
 
-import bancoDados.DaoCachorro;
+import bancoDados.dao.DaoCachorro;
 import entidade.Cachorro;
 
 public class CachorroRepositorioImplementacao implements CachorroRepositorio {
@@ -25,12 +25,12 @@ public class CachorroRepositorioImplementacao implements CachorroRepositorio {
 	public boolean delCachorroBD(String caf) {
 		DaoCachorro daoCachorro = new DaoCachorro();
 
-		for (Cachorro cachorro : retQueryCachorro()) {
-			if (cachorro.getCaf().toString().equals(caf)) {
-				return daoCachorro.delCachorroBD(caf);
-			}
+		if (buscaCachorroPorCaf(caf) != null) {
+			return daoCachorro.delCachorroBD(caf);
 		}
-		return false;
+		else {
+			return false;
+		}
 	}
 
 	@Override

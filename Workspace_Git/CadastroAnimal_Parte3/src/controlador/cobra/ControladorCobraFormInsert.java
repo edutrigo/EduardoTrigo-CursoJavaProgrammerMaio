@@ -1,4 +1,4 @@
-package controlador;
+package controlador.cobra;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,9 +8,9 @@ import javax.swing.JTextField;
 
 import entidade.Cobra;
 import manipulaArq.ManipulaArquivo;
-import repositorio.CobraRepositorioImplementacao;
+import repositorio.cobra.CobraRepositorioImplementacao;
 
-public class ControladorCobraForm implements ActionListener {
+public class ControladorCobraFormInsert implements ActionListener {
 
 	JTextField campo_01;
 	JTextField campo_02;
@@ -19,7 +19,7 @@ public class ControladorCobraForm implements ActionListener {
 	CobraRepositorioImplementacao cobraRepositorioImplemetacao = new CobraRepositorioImplementacao();
 
 	// Construtor
-	public ControladorCobraForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
+	public ControladorCobraFormInsert(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;
 		this.campo_03 = campo_03;

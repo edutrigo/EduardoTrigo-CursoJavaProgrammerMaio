@@ -8,17 +8,19 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import bancoDados.DaoCachorro;
-import bancoDados.DaoCobra;
+import bancoDados.dao.DaoCachorro;
+import bancoDados.dao.DaoCobra;
+import controlador.cachorro.ControladorCachorroQuery;
+import controlador.cobra.ControladorCobraQuery;
 import entidade.Cachorro;
 import entidade.Cobra;
-import interfaceGrafica.CachorroForm;
-import interfaceGrafica.CachorroFormDelete;
-import interfaceGrafica.CachorroFormSelectUpdate;
-import interfaceGrafica.CobraForm;
-import interfaceGrafica.CobraFormDelete;
-import repositorio.CachorroRepositorioImplementacao;
-import repositorio.CobraRepositorioImplementacao;
+import interfaceGrafica.cachorro.CachorroFormInsert;
+import interfaceGrafica.cachorro.CachorroFormDelete;
+import interfaceGrafica.cachorro.CachorroFormSelectUpdate;
+import interfaceGrafica.cobra.CobraFormInsert;
+import interfaceGrafica.cobra.CobraFormDelete;
+import repositorio.cachorro.CachorroRepositorioImplementacao;
+import repositorio.cobra.CobraRepositorioImplementacao;
 
 public class ControladorMainForm implements ActionListener {
 
@@ -30,13 +32,13 @@ public class ControladorMainForm implements ActionListener {
 	}
 
 	// Objetos Cachorro
-	CachorroForm ScrCachorroForm = new CachorroForm();
+	CachorroFormInsert ScrCachorroForm = new CachorroFormInsert();
 	DaoCachorro daoCachorro = new DaoCachorro();
 	List<Cachorro> listCachorro = new ArrayList<>();
 	Cachorro cachorro = new Cachorro();
 
 	// Objetos Cobra
-	CobraForm ScrCobraForm = new CobraForm();
+	CobraFormInsert ScrCobraForm = new CobraFormInsert();
 	DaoCobra daoCobra = new DaoCobra();
 	List<Cobra> listCobra = new ArrayList<>();
 	Cobra cobra = new Cobra();
@@ -64,7 +66,7 @@ public class ControladorMainForm implements ActionListener {
 			// Cria objeto "controladorGridCachorro" para poder usar o método "GridCachorro"
 			// e passar o conteúdo do "listCobra"
 			// No método "GridCachorro" irá alimentar um JTable e montar a tela
-			ControladorGridCachorro controladorGridCachorro = new ControladorGridCachorro();
+			ControladorCachorroQuery controladorGridCachorro = new ControladorCachorroQuery();
 			controladorGridCachorro.GridCachorro(listCachorro);
 			/*
 			 * StringBuilder aux = new StringBuilder();
@@ -93,7 +95,7 @@ public class ControladorMainForm implements ActionListener {
 			// Cria objeto "controladorGridCobra" para poder usar o método "GridCobra" e
 			// passar o conteúdo do "listCobra"
 			// No método "GridCobra" irá alimentar um JTable e montar a tela
-			ControladorGridCobra controladorGridCobra = new ControladorGridCobra();
+			ControladorCobraQuery controladorGridCobra = new ControladorCobraQuery();
 			controladorGridCobra.GridCobra(listCobra);
 			break;
 		}

@@ -1,4 +1,4 @@
-package interfaceGrafica;
+package interfaceGrafica.cobra;
 
 import java.awt.Dimension;
 import java.awt.TextField;
@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import controlador.ControladorCobraFormDeletar;
+import controlador.cobra.ControladorCobraFormDelete;
 import entidade.Cobra;
 
 public class CobraFormDelete {
@@ -76,7 +76,7 @@ public class CobraFormDelete {
 		JButton botaoDeletar = new JButton("Deletar");
 		panelGridCobra.add(botaoDeletar);
 
-		ControladorCobraFormDeletar controladorCobraFormDeletar = new ControladorCobraFormDeletar(caf, frameGridCobra);
+		ControladorCobraFormDelete controladorCobraFormDeletar = new ControladorCobraFormDelete(caf, frameGridCobra);
 		botaoDeletar.addActionListener(controladorCobraFormDeletar);
 		
 		// Deixa o FRAME visivel

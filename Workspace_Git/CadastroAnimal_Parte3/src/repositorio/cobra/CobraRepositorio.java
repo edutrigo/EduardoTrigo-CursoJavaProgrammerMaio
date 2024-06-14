@@ -1,4 +1,4 @@
-package repositorio;
+package repositorio.cobra;
 
 import java.util.List;
 

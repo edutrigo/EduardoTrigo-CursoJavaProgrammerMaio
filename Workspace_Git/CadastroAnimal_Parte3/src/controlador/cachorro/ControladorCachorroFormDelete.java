@@ -1,4 +1,4 @@
-package controlador;
+package controlador.cachorro;
 
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -7,15 +7,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import repositorio.CachorroRepositorioImplementacao;
+import repositorio.cachorro.CachorroRepositorioImplementacao;
 
-public class ControladorCachorroFormDeletar implements ActionListener {
+public class ControladorCachorroFormDelete implements ActionListener {
 
 	TextField cafRecebido;
 	JFrame frameDeletar;
 	CachorroRepositorioImplementacao cachorroRepositorioImplementacao = new CachorroRepositorioImplementacao();
 
-	public ControladorCachorroFormDeletar(TextField cafRecebido, JFrame frameDeletar) {
+	public ControladorCachorroFormDelete(TextField cafRecebido, JFrame frameDeletar) {
 		this.cafRecebido = cafRecebido;
 		this.frameDeletar = frameDeletar;
 	}

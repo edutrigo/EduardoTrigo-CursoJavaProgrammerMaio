@@ -1,4 +1,4 @@
-package interfaceGrafica;
+package interfaceGrafica.cachorro;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -6,9 +6,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controlador.ControladorCachorroForm;
+import controlador.cachorro.ControladorCachorroFormInsert;
 
-public class CachorroForm {
+public class CachorroFormInsert {
 
 	public void montaCachorroForm() {
 
@@ -51,7 +51,7 @@ public class CachorroForm {
 		panelCachorroForm.add(saveBottom);
 
 		// CRIANDO UM CONTROLADOR (LISTENER) PARA O BOTAO
-		ControladorCachorroForm controladorCachorroForm = new ControladorCachorroForm(InputCampo01, InputCampo02, InputCampo03);
+		ControladorCachorroFormInsert controladorCachorroForm = new ControladorCachorroFormInsert(InputCampo01, InputCampo02, InputCampo03);
 
 		saveBottom.addActionListener(controladorCachorroForm);
 

@@ -1,4 +1,4 @@
-package interfaceGrafica;
+package interfaceGrafica.cobra;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -6,9 +6,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controlador.ControladorCobraForm;
+import controlador.cobra.ControladorCobraFormInsert;
 
-public class CobraForm {
+public class CobraFormInsert {
 
 	public void montaCobraForm() {
 
@@ -51,7 +51,7 @@ public class CobraForm {
 		panelCobraForm.add(saveBottom);
 
 		// CRIANDO UM CONTROLADOR (LISTENER) PARA O BOTAO
-		ControladorCobraForm controladorCobraForm = new ControladorCobraForm(InputCampo01, InputCampo02, InputCampo03);
+		ControladorCobraFormInsert controladorCobraForm = new ControladorCobraFormInsert(InputCampo01, InputCampo02, InputCampo03);
 
 		saveBottom.addActionListener(controladorCobraForm);
 

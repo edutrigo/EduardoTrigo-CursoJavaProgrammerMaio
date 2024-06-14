@@ -1,4 +1,4 @@
-package interfaceGrafica;
+package interfaceGrafica.cachorro;
 
 import java.awt.Dimension;
 import java.awt.TextField;
@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import controlador.ControladorCachorroFormDeletar;
+import controlador.cachorro.ControladorCachorroFormDelete;
 import entidade.Cachorro;
 
 public class CachorroFormDelete {
@@ -76,7 +76,7 @@ public class CachorroFormDelete {
 		JButton botaoDeletar = new JButton("Deletar");
 		panelGridCachorro.add(botaoDeletar);
 
-		ControladorCachorroFormDeletar controladorCachorroFormDeletar = new ControladorCachorroFormDeletar(caf, frameGridCachorro);
+		ControladorCachorroFormDelete controladorCachorroFormDeletar = new ControladorCachorroFormDelete(caf, frameGridCachorro);
 		botaoDeletar.addActionListener(controladorCachorroFormDeletar);
 		
 		// Deixa o FRAME visivel

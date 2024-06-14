@@ -1,4 +1,4 @@
-package interfaceGrafica;
+package interfaceGrafica.cachorro;
 
 import java.awt.Dimension;
 import java.awt.TextField;
@@ -9,7 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import controlador.ControladorCachorroFormSelectUpdate;
+
+import controlador.cachorro.ControladorCachorroFormSelectUpdate;
 import entidade.Cachorro;
 
 public class CachorroFormSelectUpdate {
@@ -75,10 +76,15 @@ public class CachorroFormSelectUpdate {
 		JButton botaoUpdate = new JButton("Atualizar");
 		panelGridCachorro.add(botaoUpdate);
 
+		JButton botaoVoltar = new JButton("Voltar");
+		panelGridCachorro.add(botaoVoltar);
+
 		ControladorCachorroFormSelectUpdate controladorCachorroFormUpdate = new ControladorCachorroFormSelectUpdate(caf,
 				frameGridCachorro);
 
 		botaoUpdate.addActionListener(controladorCachorroFormUpdate);
+
+		botaoVoltar.addActionListener(controladorCachorroFormUpdate);
 
 		// Deixa o FRAME visivel
 		frameGridCachorro.setVisible(true);

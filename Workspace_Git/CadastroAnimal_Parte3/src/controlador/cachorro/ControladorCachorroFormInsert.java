@@ -1,4 +1,4 @@
-package controlador;
+package controlador.cachorro;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,9 +8,9 @@ import javax.swing.JTextField;
 
 import entidade.Cachorro;
 import manipulaArq.ManipulaArquivo;
-import repositorio.CachorroRepositorioImplementacao;
+import repositorio.cachorro.CachorroRepositorioImplementacao;
 
-public class ControladorCachorroForm implements ActionListener {
+public class ControladorCachorroFormInsert implements ActionListener {
 
 	JTextField campo_01;
 	JTextField campo_02;
@@ -19,7 +19,7 @@ public class ControladorCachorroForm implements ActionListener {
 	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
 
 	// Construtor
-	public ControladorCachorroForm(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
+	public ControladorCachorroFormInsert(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;
 		this.campo_03 = campo_03;

@@ -1,4 +1,4 @@
-package controlador;
+package controlador.cachorro;
 
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import entidade.Cachorro;
-import repositorio.CachorroRepositorioImplementacao;
+import repositorio.cachorro.CachorroRepositorioImplementacao;
 
 public class ControladorCachorroFormSelectUpdate implements ActionListener {
 
@@ -26,16 +26,21 @@ public class ControladorCachorroFormSelectUpdate implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		Cachorro cachorro = new Cachorro();
+		if (e.getActionCommand().equals("Atualizar")) {
+			Cachorro cachorro = new Cachorro();
 
-		cachorro = cachorroRepositorio.buscaCachorroPorCaf(campo_01.getText());
+			cachorro = cachorroRepositorio.buscaCachorroPorCaf(campo_01.getText());
 
-		if (cachorro == null) {
-			JOptionPane.showMessageDialog(null, "CAF para Cachorro não encontrado! > " + campo_01.getText());
+			if (cachorro == null) {
+				JOptionPane.showMessageDialog(null, "CAF para Cachorro não encontrado! > " + campo_01.getText());
+			} else {
+
+				frameTela.setVisible(false);
+				JOptionPane.showMessageDialog(null, "CHAMAR AQUI A TELA PRA FAZER ALTERACAO");
+			}
 		} else {
-
+			// VOLTAR
 			frameTela.setVisible(false);
-			JOptionPane.showMessageDialog(null, "CHAMAR AQUI A TELA PRA FAZER ALTERACAO");
 		}
 	}
 }

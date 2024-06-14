@@ -1,4 +1,4 @@
-package repositorio;
+package repositorio.cachorro;
 
 import java.util.List;
 

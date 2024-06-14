@@ -1,9 +1,9 @@
-package repositorio;
+package repositorio.cobra;
 
 import java.util.List;
 
-import bancoDados.DaoCachorro;
-import bancoDados.DaoCobra;
+import bancoDados.dao.DaoCachorro;
+import bancoDados.dao.DaoCobra;
 import entidade.Cachorro;
 import entidade.Cobra;
 
