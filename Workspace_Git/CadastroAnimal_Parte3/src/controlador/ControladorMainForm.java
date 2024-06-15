@@ -18,6 +18,7 @@ import interfaceGrafica.cachorro.CachorroFormInsert;
 import interfaceGrafica.cachorro.CachorroFormDelete;
 import interfaceGrafica.cachorro.CachorroFormUpdateSelecao;
 import interfaceGrafica.cobra.CobraFormInsert;
+import interfaceGrafica.cobra.CobraFormUpdateSelecao;
 import interfaceGrafica.cobra.CobraFormDelete;
 import repositorio.cachorro.CachorroRepositorioImplementacao;
 import repositorio.cobra.CobraRepositorioImplementacao;
@@ -138,6 +139,13 @@ public class ControladorMainForm implements ActionListener {
 
 		case "8": {
 			// ALTERA COBRA
+			CobraRepositorioImplementacao cobraRepositorioImplementacao = new CobraRepositorioImplementacao();
+
+			listCobra = cobraRepositorioImplementacao.retQueryCobra();
+
+			CobraFormUpdateSelecao cobraFormSelectUpdate = new CobraFormUpdateSelecao();
+
+			cobraFormSelectUpdate.GridCobra(listCobra);
 			break;
 		}
 

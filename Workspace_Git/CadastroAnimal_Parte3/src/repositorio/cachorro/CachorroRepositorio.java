@@ -16,5 +16,5 @@ public interface CachorroRepositorio {
 
 	public boolean updateCachorroBD(Cachorro cachorro);
 
-	public Cachorro buscaCachorroPorCaf(String cpf);
+	public Cachorro buscaCachorroPorCaf(String caf);
 }

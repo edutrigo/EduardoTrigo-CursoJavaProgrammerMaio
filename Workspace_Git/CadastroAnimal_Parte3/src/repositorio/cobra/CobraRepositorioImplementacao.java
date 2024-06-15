@@ -20,12 +20,11 @@ public class CobraRepositorioImplementacao implements CobraRepositorio {
 	public boolean delCobraBD(String caf) {
 		DaoCobra daoCobra = new DaoCobra();
 
-		for (Cobra cobra : retQueryCobra()) {
-			if (cobra.getCaf().toString().equals(caf)) {
-				return daoCobra.delCobraBD(caf);
-			}
+		if (buscaCobraPorCaf(caf) != null) {
+			return daoCobra.delCobraBD(caf);
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	@Override
@@ -34,4 +33,21 @@ public class CobraRepositorioImplementacao implements CobraRepositorio {
 
 		return daoCobra.retQueryCobra();
 	}
+
+	@Override
+	public boolean updateCobraBD(Cobra cobra) {
+		DaoCobra daoCobra = new DaoCobra();
+		return daoCobra.updateCobraBD(cobra);
+	}
+
+	@Override
+	public Cobra buscaCobraPorCaf(String caf) {
+		for (Cobra cobra : retQueryCobra()) {
+			if (cobra.getCaf().toString().equals(caf)) {
+				return cobra;
+			}
+		}
+		return null;
+	}
+
 }

@@ -201,7 +201,7 @@ public class DaoCobra {
 		PreparedStatement preComandoSQL = null;
 
 		// String SQL
-		String cmdSQL = "update from animal set nome = ?, tipo_veneno = ? where tipo_animal = ? and caf = ?";
+		String cmdSQL = "update animal set nome = ?, tipo_veneno = ? where tipo_animal = ? and caf = ?";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
