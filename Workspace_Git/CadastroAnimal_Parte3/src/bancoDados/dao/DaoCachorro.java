@@ -201,7 +201,7 @@ public class DaoCachorro {
 		PreparedStatement preComandoSQL = null;
 
 		// String SQL
-		String cmdSQL = "update from animal set nome = ?, cor_pelo = ? where tipo_animal = ? and caf = ?";
+		String cmdSQL = "update animal set nome = ?, cor_pelo = ? where tipo_animal = ? and caf = ?";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"

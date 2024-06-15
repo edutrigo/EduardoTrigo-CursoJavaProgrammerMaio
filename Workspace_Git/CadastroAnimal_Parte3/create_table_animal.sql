@@ -3,8 +3,8 @@ DROP TABLE Animal;
 create table Animal ( tipo_animal varchar(10)
                     , caf         varchar(15)
                     , nome        varchar(100)
-                    , cor_pelo    varchar(10)
-                    , tipo_veneno varchar(10) );
+                    , cor_pelo    varchar(20)
+                    , tipo_veneno varchar(20) );
 					
 
 insert into Animal values ( "CACHORRO", 01, "CAO 01", "COR PELO 1", NULL );

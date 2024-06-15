@@ -8,17 +8,18 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import entidade.Cachorro;
+import interfaceGrafica.cachorro.CachorroFormUpdateManutencao;
 import repositorio.cachorro.CachorroRepositorioImplementacao;
 
-public class ControladorCachorroFormSelectUpdate implements ActionListener {
+public class ControladorCachorroFormUpdateSelecao implements ActionListener {
 
 	TextField campo_01; // CAF
 	JFrame frameTela;
-
 	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
+	CachorroFormUpdateManutencao cachorroFormUpdateManutencao = new CachorroFormUpdateManutencao();
 
 	// Construtor
-	public ControladorCachorroFormSelectUpdate(TextField campo_01, JFrame frameTela) {
+	public ControladorCachorroFormUpdateSelecao(TextField campo_01, JFrame frameTela) {
 		this.campo_01 = campo_01; // CAF
 		this.frameTela = frameTela;
 	}
@@ -35,8 +36,10 @@ public class ControladorCachorroFormSelectUpdate implements ActionListener {
 				JOptionPane.showMessageDialog(null, "CAF para Cachorro não encontrado! > " + campo_01.getText());
 			} else {
 
+				JOptionPane.showMessageDialog(null, "CAF para Cachorro encontrado! > " + cachorro.getCaf());
+				
+				cachorroFormUpdateManutencao.montaCachorroFormManutencao(cachorro);
 				frameTela.setVisible(false);
-				JOptionPane.showMessageDialog(null, "CHAMAR AQUI A TELA PRA FAZER ALTERACAO");
 			}
 		} else {
 			// VOLTAR

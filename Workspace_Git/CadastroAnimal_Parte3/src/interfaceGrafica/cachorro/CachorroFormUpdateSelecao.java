@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import controlador.cachorro.ControladorCachorroFormSelectUpdate;
+import controlador.cachorro.ControladorCachorroFormUpdateSelecao;
 import entidade.Cachorro;
 
-public class CachorroFormSelectUpdate {
+public class CachorroFormUpdateSelecao {
 
 	public void GridCachorro(List<Cachorro> listaCahorro) {
 
@@ -79,7 +79,7 @@ public class CachorroFormSelectUpdate {
 		JButton botaoVoltar = new JButton("Voltar");
 		panelGridCachorro.add(botaoVoltar);
 
-		ControladorCachorroFormSelectUpdate controladorCachorroFormUpdate = new ControladorCachorroFormSelectUpdate(caf,
+		ControladorCachorroFormUpdateSelecao controladorCachorroFormUpdate = new ControladorCachorroFormUpdateSelecao(caf,
 				frameGridCachorro);
 
 		botaoUpdate.addActionListener(controladorCachorroFormUpdate);

@@ -16,7 +16,7 @@ import entidade.Cachorro;
 import entidade.Cobra;
 import interfaceGrafica.cachorro.CachorroFormInsert;
 import interfaceGrafica.cachorro.CachorroFormDelete;
-import interfaceGrafica.cachorro.CachorroFormSelectUpdate;
+import interfaceGrafica.cachorro.CachorroFormUpdateSelecao;
 import interfaceGrafica.cobra.CobraFormInsert;
 import interfaceGrafica.cobra.CobraFormDelete;
 import repositorio.cachorro.CachorroRepositorioImplementacao;
@@ -130,7 +130,7 @@ public class ControladorMainForm implements ActionListener {
 
 			listCachorro = cachorroRepositorioImplementacao.retQueryCachorro();
 
-			CachorroFormSelectUpdate cachorroFormSelectUpdate = new CachorroFormSelectUpdate();
+			CachorroFormUpdateSelecao cachorroFormSelectUpdate = new CachorroFormUpdateSelecao();
 
 			cachorroFormSelectUpdate.GridCachorro(listCachorro);
 			break;
