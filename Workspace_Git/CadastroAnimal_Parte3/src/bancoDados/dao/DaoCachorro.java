@@ -57,8 +57,8 @@ public class DaoCachorro {
 				if (conexaoBD != null) {
 					conexaoBD.close();
 				}
-				if (preComandoSQL != null) {
-					preComandoSQL.close();
+				if (conexaoBD != null) {
+					conexaoBD.close();
 				}
 
 			} catch (Exception e2) {
