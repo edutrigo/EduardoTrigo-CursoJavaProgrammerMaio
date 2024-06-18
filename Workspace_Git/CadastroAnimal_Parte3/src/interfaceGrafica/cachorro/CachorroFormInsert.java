@@ -15,10 +15,11 @@ public class CachorroFormInsert {
 		String v_campo_01 = "Nome";
 		String v_campo_02 = "CAF";
 		String v_campo_03 = "Cor do Pelo";
+		String v_campo_04 = "Peso";
 
 		// CRIANDO FRAME
 		JFrame frmCachorroForm = new JFrame();
-		frmCachorroForm.setSize(150, 250);
+		frmCachorroForm.setSize(150, 300);
 
 		// CRIANDO PANEL
 		JPanel panelCachorroForm = new JPanel();
@@ -45,13 +46,19 @@ public class CachorroFormInsert {
 
 		JTextField InputCampo03 = new JTextField(10);
 		panelCachorroForm.add(InputCampo03);
+		//
+		JLabel labelCampo04 = new JLabel(v_campo_04);
+		panelCachorroForm.add(labelCampo04);
 
+		JTextField InputCampo04 = new JTextField(10);
+		panelCachorroForm.add(InputCampo04);
+		
 		// CRIANDO BOTAO e agrupando no PANEL
 		JButton saveBottom = new JButton("Save Cachorro");
 		panelCachorroForm.add(saveBottom);
 
 		// CRIANDO UM CONTROLADOR (LISTENER) PARA O BOTAO
-		ControladorCachorroFormInsert controladorCachorroForm = new ControladorCachorroFormInsert(InputCampo01, InputCampo02, InputCampo03);
+		ControladorCachorroFormInsert controladorCachorroForm = new ControladorCachorroFormInsert(InputCampo01, InputCampo02, InputCampo03, InputCampo04 );
 
 		saveBottom.addActionListener(controladorCachorroForm);
 

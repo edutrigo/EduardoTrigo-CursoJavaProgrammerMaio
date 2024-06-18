@@ -4,14 +4,21 @@ import java.util.List;
 
 import bancoDados.dao.DaoCachorro;
 import entidade.Cachorro;
+import servico.EntidadeServico;
 
 public class CachorroRepositorioImplementacao implements CachorroRepositorio {
 
 	@Override
-	public boolean saveCachorroBD(Cachorro cachorro) {
+	public boolean saveCachorroBD(Cachorro cachorro, String peso) {
 		DaoCachorro daoCachorro = new DaoCachorro();
+		EntidadeServico entidadeServico = new EntidadeServico();
 
-		return daoCachorro.saveCachorroBD(cachorro);
+		if (entidadeServico.buscaPrecoCachorro(peso) == null) {
+			return false;
+		} else {
+			cachorro.setPreco(entidadeServico.buscaPrecoCachorro(peso));
+			return daoCachorro.saveCachorroBD(cachorro);
+		}
 	}
 
 	@Override
@@ -27,8 +34,7 @@ public class CachorroRepositorioImplementacao implements CachorroRepositorio {
 
 		if (buscaCachorroPorCaf(caf) != null) {
 			return daoCachorro.delCachorroBD(caf);
-		}
-		else {
+		} else {
 			return false;
 		}
 	}

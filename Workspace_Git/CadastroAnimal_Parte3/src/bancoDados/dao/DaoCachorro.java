@@ -26,7 +26,7 @@ public class DaoCachorro {
 		PreparedStatement preComandoSQL = null;
 
 		// String SQL
-		String cmdSQL = "insert into animal (tipo_animal, caf, nome, cor_pelo) values (?, ?, ?, ?)";
+		String cmdSQL = "insert into animal (tipo_animal, caf, nome, cor_pelo, preco) values (?, ?, ?, ?, ?)";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -40,6 +40,7 @@ public class DaoCachorro {
 			preComandoSQL.setString(2, cachorro.getCaf().toString());
 			preComandoSQL.setString(3, cachorro.getNome());
 			preComandoSQL.setString(4, cachorro.getCorPelo());
+			preComandoSQL.setString(5, cachorro.getPreco().toString());
 
 			// Passa o comando para o BD e também faz o COMMIT
 			preComandoSQL.execute();
@@ -143,7 +144,7 @@ public class DaoCachorro {
 		List<Cachorro> listCachorro = new ArrayList<>();
 
 		// String SQL
-		String cmdSQL = "select caf, nome, cor_pelo from animal where tipo_animal='CACHORRO'";
+		String cmdSQL = "select caf, nome, cor_pelo, preco from animal where tipo_animal='CACHORRO'";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -162,6 +163,7 @@ public class DaoCachorro {
 				cachorro.setCaf(Integer.parseInt(resultQuery.getString("CAF")));
 				cachorro.setNome(resultQuery.getString("NOME"));
 				cachorro.setCorPelo(resultQuery.getString("COR_PELO"));
+				cachorro.setPreco(Double.parseDouble(resultQuery.getString("PRECO")));
 
 				listCachorro.add(cachorro);
 			}
@@ -201,7 +203,7 @@ public class DaoCachorro {
 		PreparedStatement preComandoSQL = null;
 
 		// String SQL
-		String cmdSQL = "update animal set nome = ?, cor_pelo = ? where tipo_animal = ? and caf = ?";
+		String cmdSQL = "update animal set nome = ?, cor_pelo = ?, preco = ? where tipo_animal = ? and caf = ?";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -215,6 +217,7 @@ public class DaoCachorro {
 			preComandoSQL.setString(2, cachorro.getCorPelo());
 			preComandoSQL.setString(3, "CACHORRO");
 			preComandoSQL.setString(4, cachorro.getCaf().toString());
+			preComandoSQL.setString(5, cachorro.getPreco().toString());
 
 			// Passa o comando para o BD e também faz o COMMIT
 			preComandoSQL.execute();
@@ -243,4 +246,5 @@ public class DaoCachorro {
 		}
 		return confirmaProcesso;
 	}
+
 }

@@ -4,6 +4,7 @@ public abstract class Animal {
 	// Variaveis PRIVADAS
 	private String nome;
 	private Integer caf; // cadastro animal fisico
+	private Double preco;
 
 	public String getNome() {
 		return nome;
@@ -19,6 +20,19 @@ public abstract class Animal {
 
 	public void setCaf(Integer caf) {
 		this.caf = caf;
+	}
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+	// CALCULA PRECO GENERICO ANIMAL 
+	public Double calcularPreco(int peso) {
+		return peso * 100.0;
 	}
 
 }

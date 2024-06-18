@@ -15,14 +15,17 @@ public class ControladorCachorroFormInsert implements ActionListener {
 	JTextField campo_01;
 	JTextField campo_02;
 	JTextField campo_03;
+	JTextField campo_04;
 
 	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
 
 	// Construtor
-	public ControladorCachorroFormInsert(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
+	public ControladorCachorroFormInsert(JTextField campo_01, JTextField campo_02, JTextField campo_03,
+			JTextField campo_04) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;
 		this.campo_03 = campo_03;
+		this.campo_04 = campo_04;
 	}
 
 	@Override
@@ -40,6 +43,9 @@ public class ControladorCachorroFormInsert implements ActionListener {
 
 			JOptionPane.showMessageDialog(null, "Campo 'CorPelo' não pode ficar" + "\n" + "em branco!");
 
+		} else if (campo_04.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Campo 'Peso' não pode ficar" + "\n" + "em branco!");
+
 		} else {
 			Cachorro cachorro = new Cachorro();
 
@@ -52,9 +58,11 @@ public class ControladorCachorroFormInsert implements ActionListener {
 			regCachorro.InsereCachorro(cachorro);
 
 			// SALVE EM BANCO DE DADOS - ATRAVES DA INTERFACE
-			cachorroRepositorio.saveCachorroBD(cachorro);
-
-			JOptionPane.showMessageDialog(null, "Cadastro de Cachorro" + "\n" + "efetuado com sucesso!");
+			if (cachorroRepositorio.saveCachorroBD(cachorro, campo_04.getText())) {
+				JOptionPane.showMessageDialog(null, "Cadastro de Cachorro" + "\n" + "efetuado com sucesso!");
+			} else {
+				JOptionPane.showMessageDialog(null, "Erro ao registrar Cachorro..." + "\n" + "Processo cancelado.!");
+			}
 		}
 	}
 }

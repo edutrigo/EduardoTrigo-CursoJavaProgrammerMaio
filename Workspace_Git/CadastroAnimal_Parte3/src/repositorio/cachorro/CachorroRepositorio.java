@@ -8,7 +8,7 @@ public interface CachorroRepositorio {
 
 	// Estas são classes (somente assinatura) do DaoCachorro (tipo "package
 	// specification"
-	public boolean saveCachorroBD(Cachorro cachorro);
+	public boolean saveCachorroBD(Cachorro cachorro, String peso);
 
 	public List<Cachorro> retQueryCachorro();
 
