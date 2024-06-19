@@ -15,10 +15,11 @@ public class CobraFormInsert {
 		String v_campo_01 = "Nome";
 		String v_campo_02 = "CAF";
 		String v_campo_03 = "Tipo Veneno";
+		String v_campo_04 = "Peso";
 
 		// CRIANDO FRAME
 		JFrame frmCobraForm = new JFrame();
-		frmCobraForm.setSize(150, 250);
+		frmCobraForm.setSize(150, 300);
 
 		// CRIANDO PANEL
 		JPanel panelCobraForm = new JPanel();
@@ -46,12 +47,19 @@ public class CobraFormInsert {
 		JTextField InputCampo03 = new JTextField(10);
 		panelCobraForm.add(InputCampo03);
 
+		//
+		JLabel labelCampo04 = new JLabel(v_campo_04);
+		panelCobraForm.add(labelCampo04);
+
+		JTextField InputCampo04 = new JTextField(10);
+		panelCobraForm.add(InputCampo04);
+
 		// CRIANDO BOTAO e agrupando no PANEL
 		JButton saveBottom = new JButton("Save Cobra");
 		panelCobraForm.add(saveBottom);
 
 		// CRIANDO UM CONTROLADOR (LISTENER) PARA O BOTAO
-		ControladorCobraFormInsert controladorCobraForm = new ControladorCobraFormInsert(InputCampo01, InputCampo02, InputCampo03);
+		ControladorCobraFormInsert controladorCobraForm = new ControladorCobraFormInsert(InputCampo01, InputCampo02, InputCampo03, InputCampo04);
 
 		saveBottom.addActionListener(controladorCobraForm);
 

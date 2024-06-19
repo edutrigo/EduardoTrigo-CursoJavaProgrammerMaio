@@ -1,5 +1,5 @@
 Registro Cobra
 --------------
-Nome.......:CASCAVEL
-CAF........:2
-Tipo Veneno:PEÇONHENTA
+Nome.......:COBRA CC
+CAF........:1234
+Tipo Veneno:VENONO

@@ -26,7 +26,7 @@ public class DaoCobra {
 		PreparedStatement preComandoSQL = null;
 
 		// String SQL
-		String cmdSQL = "insert into animal (tipo_animal, caf, nome, tipo_veneno) values (?, ?, ?, ?)";
+		String cmdSQL = "insert into animal (tipo_animal, caf, nome, tipo_veneno, preco) values (?, ?, ?, ?, ?)";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -40,7 +40,8 @@ public class DaoCobra {
 			preComandoSQL.setString(2, cobra.getCaf().toString());
 			preComandoSQL.setString(3, cobra.getNome());
 			preComandoSQL.setString(4, cobra.getTipoVeneno());
-
+			preComandoSQL.setString(5, cobra.getPreco().toString());
+			
 			// Passa o comando para o BD e também faz o COMMIT
 			preComandoSQL.execute();
 

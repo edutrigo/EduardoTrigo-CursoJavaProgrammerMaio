@@ -3,6 +3,7 @@ package servico;
 import javax.swing.JOptionPane;
 
 import entidade.Cachorro;
+import entidade.Cobra;
 import validacao.EntidadeValidacao;
 
 public class EntidadeServico {
@@ -19,4 +20,18 @@ public class EntidadeServico {
 		}
 		return null;
 	}
+
+	// CAPTURA O PRECO DA COBRA
+	public Double buscaPrecoCobra(String peso) {
+		Cobra cobra = new Cobra();
+		EntidadeValidacao entidadeValidacao = new EntidadeValidacao();
+
+		if (entidadeValidacao.validaPeso(peso) == null) {
+			JOptionPane.showMessageDialog(null, "O peso " + peso + " não é valido...");
+		} else {
+			return cobra.calcularPreco(entidadeValidacao.validaPeso(peso));
+		}
+		return null;
+	}
+
 }

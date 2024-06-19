@@ -15,14 +15,18 @@ public class ControladorCobraFormInsert implements ActionListener {
 	JTextField campo_01;
 	JTextField campo_02;
 	JTextField campo_03;
+	JTextField campo_04;
 
 	CobraRepositorioImplementacao cobraRepositorioImplemetacao = new CobraRepositorioImplementacao();
 
 	// Construtor
-	public ControladorCobraFormInsert(JTextField campo_01, JTextField campo_02, JTextField campo_03) {
+	public ControladorCobraFormInsert(JTextField campo_01, JTextField campo_02, JTextField campo_03,
+			JTextField campo_04) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;
 		this.campo_03 = campo_03;
+		this.campo_04 = campo_04;
+
 	}
 
 	@Override
@@ -40,6 +44,9 @@ public class ControladorCobraFormInsert implements ActionListener {
 
 			JOptionPane.showMessageDialog(null, "Campo 'Tipo Veneno' não pode ficar" + "\n" + "em branco!");
 
+		} else if (campo_04.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Campo 'Peso' não pode ficar" + "\n" + "em branco!");
+
 		} else {
 			Cobra cobra = new Cobra();
 
@@ -51,10 +58,12 @@ public class ControladorCobraFormInsert implements ActionListener {
 			ManipulaArquivo regCobra = new ManipulaArquivo();
 			regCobra.InsereCobra(cobra);
 
-			// SALVA EM BANCO DE DADOS - USANDO INTERFACE
-			cobraRepositorioImplemetacao.saveCobraBD(cobra);
-
-			JOptionPane.showMessageDialog(null, "Cadastro de Cobra" + "\n" + "efetuado com sucesso!");
+			// SALVE EM BANCO DE DADOS - ATRAVES DA INTERFACE
+			if (cobraRepositorioImplemetacao.saveCobraBD(cobra, campo_04.getText())) {
+				JOptionPane.showMessageDialog(null, "Cadastro de Cobra" + "\n" + "efetuado com sucesso!");
+			} else {
+				JOptionPane.showMessageDialog(null, "Erro ao registrar Cobra..." + "\n" + "Processo cancelado.!");
+			}
 		}
 	}
 }

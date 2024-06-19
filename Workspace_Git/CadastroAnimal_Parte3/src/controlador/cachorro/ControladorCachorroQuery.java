@@ -22,7 +22,7 @@ public class ControladorCachorroQuery {
 		int qtdRegistros = listaCahorro.size();
 
 		// Faz o dimencionamento da matriz, já fixando a quantidade de colunas "3"
-		String[][] gridString = new String[qtdRegistros][3];
+		String[][] gridString = new String[qtdRegistros][4];
 
 		// Inicializa contadores
 		int posColuna = 0;
@@ -38,6 +38,9 @@ public class ControladorCachorroQuery {
 			posColuna++;
 			gridString[posLinha][posColuna] = cachorro.getCorPelo();
 
+			posColuna++;
+			gridString[posLinha][posColuna] = cachorro.getPreco().toString();
+
 			posLinha++;
 			posColuna = 0;
 		}
@@ -47,18 +50,15 @@ public class ControladorCachorroQuery {
 		frameGridCachorro.setSize(500, 250);
 
 		// Monta a "linha cabeçalho" do GRID
-		String nomeColunas[] = { "CAF", "NOME", "COR PELO" };
+		String nomeColunas[] = { "CAF", "NOME", "COR PELO", "PRECO" };
 
 		// Monta uma TABELA com os dados (gridString) e o cabeçalho (nomeColunas)
 		JTable gridCachorro = new JTable(gridString, nomeColunas);
 
-		// Configura a TABELA posição(x,y) e o tamanho(width/height) -- largura / altura
-		// gridCachorro.setBounds(1, 1, 400, 400);
-
 		// Cria objeto visual(GRID) para apresentar na tela
 		JScrollPane scrollPaneGridCachorro = new JScrollPane(gridCachorro);
 
-		scrollPaneGridCachorro.setPreferredSize(new Dimension(450, 185));
+		scrollPaneGridCachorro.setPreferredSize(new Dimension(600, 185));
 
 		// CRIA um PANEL
 		JPanel panelGridCachorro = new JPanel();
