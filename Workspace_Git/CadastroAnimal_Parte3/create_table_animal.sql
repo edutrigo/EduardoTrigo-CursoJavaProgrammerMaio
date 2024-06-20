@@ -6,7 +6,7 @@ create table Animal ( tipo_animal varchar(10)
                     , cor_pelo    varchar(20)
                     , tipo_veneno varchar(20)
                     , preco       decimal(10,2)
-					, cep		  varchar(8);
+					, cep		  varchar(9);
 					, localidade  varchar(100);
 					, logradouro  varchar(200);
 					, bairro	  varchar(100);

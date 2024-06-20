@@ -1,5 +1,5 @@
 Registro Cachorro
 -----------------
-Nome....:03422000
-CAF.....:3422000
-Cor Pelo:03422000
+Nome....:DOG 33
+CAF.....:33
+Cor Pelo:PELO 33

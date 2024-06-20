@@ -31,6 +31,24 @@ public class ControladorCachorroFormInsert implements ActionListener {
 		this.campo_05 = campo_05;
 	}
 
+	// POPULA CACHORRO
+	public Cachorro populaCachorro() {
+
+		Cachorro cachorro = new Cachorro();
+		EnderecoCliente enderecoCliente = new EnderecoCliente();
+
+		cachorro.setNome(campo_01.getText());
+		cachorro.setCaf(Integer.parseInt(campo_02.getText()));
+		cachorro.setCorPelo(campo_03.getText());
+
+		try {
+			cachorro.setEndereco(enderecoCliente.buscarEnderecoPeloCep(campo_05.getText()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cachorro;
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -76,22 +94,4 @@ public class ControladorCachorroFormInsert implements ActionListener {
 			}
 		}
 	}
-
-	public Cachorro populaCachorro() {
-
-		Cachorro cachorro = new Cachorro();
-		EnderecoCliente enderecoCliente = new EnderecoCliente();
-
-		cachorro.setNome(campo_01.getText());
-		cachorro.setCaf(Integer.parseInt(campo_02.getText()));
-		cachorro.setCorPelo(campo_03.getText());
-
-		try {
-			cachorro.setEndereco(enderecoCliente.buscarEnderecoPeloCep(campo_05.getText()));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return cachorro;
-	}
-
 }
