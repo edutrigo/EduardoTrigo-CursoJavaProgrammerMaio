@@ -5,6 +5,15 @@ public abstract class Animal {
 	private String nome;
 	private Integer caf; // cadastro animal fisico
 	private Double preco;
+	private Endereco endereco;
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public String getNome() {
 		return nome;
@@ -30,7 +39,7 @@ public abstract class Animal {
 		this.preco = preco;
 	}
 
-	// CALCULA PRECO GENERICO ANIMAL 
+	// CALCULA PRECO GENERICO ANIMAL
 	public Double calcularPreco(int peso) {
 		return peso * 100.0;
 	}

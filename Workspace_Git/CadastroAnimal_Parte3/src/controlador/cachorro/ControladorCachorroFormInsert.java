@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import entidade.Cachorro;
 import manipulaArq.ManipulaArquivo;
 import repositorio.cachorro.CachorroRepositorioImplementacao;
+import servico.client.EnderecoCliente;
 
 public class ControladorCachorroFormInsert implements ActionListener {
 
@@ -16,16 +17,18 @@ public class ControladorCachorroFormInsert implements ActionListener {
 	JTextField campo_02;
 	JTextField campo_03;
 	JTextField campo_04;
+	JTextField campo_05;
 
 	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
 
 	// Construtor
 	public ControladorCachorroFormInsert(JTextField campo_01, JTextField campo_02, JTextField campo_03,
-			JTextField campo_04) {
+			JTextField campo_04, JTextField campo_05) {
 		this.campo_01 = campo_01;
 		this.campo_02 = campo_02;
 		this.campo_03 = campo_03;
 		this.campo_04 = campo_04;
+		this.campo_05 = campo_05;
 	}
 
 	@Override
@@ -46,23 +49,49 @@ public class ControladorCachorroFormInsert implements ActionListener {
 		} else if (campo_04.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Campo 'Peso' não pode ficar" + "\n" + "em branco!");
 
+		} else if (campo_05.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Campo 'CEP' não pode ficar" + "\n" + "em branco!");
+
 		} else {
-			Cachorro cachorro = new Cachorro();
 
-			cachorro.setNome(campo_01.getText());
-			cachorro.setCaf(Integer.parseInt(campo_02.getText()));
-			cachorro.setCorPelo(campo_03.getText());
+			Cachorro populaCachorro = populaCachorro();
 
-			// SALVA RM ARQUIVO
-			ManipulaArquivo regCachorro = new ManipulaArquivo();
-			regCachorro.InsereCachorro(cachorro);
+			int confirmacao = JOptionPane.showConfirmDialog(null, "Confirma os dados:" + "\n" + populaCachorro.getNome()
+					+ "\n" + populaCachorro.getCaf() + "\n" + populaCachorro.getEndereco().getBairro() + "\n"
+					+ populaCachorro.getEndereco().getLocalidade() + "\n" + populaCachorro.getEndereco().getLogradouro()
+					+ "\n" + populaCachorro.getEndereco().getUf() + "\n");
 
-			// SALVE EM BANCO DE DADOS - ATRAVES DA INTERFACE
-			if (cachorroRepositorio.saveCachorroBD(cachorro, campo_04.getText())) {
-				JOptionPane.showMessageDialog(null, "Cadastro de Cachorro" + "\n" + "efetuado com sucesso!");
-			} else {
-				JOptionPane.showMessageDialog(null, "Erro ao registrar Cachorro..." + "\n" + "Processo cancelado.!");
+			if (confirmacao == 0) {
+				// SALVA RM ARQUIVO
+				ManipulaArquivo regCachorro = new ManipulaArquivo();
+				regCachorro.InsereCachorro(populaCachorro);
+
+				// SALVE EM BANCO DE DADOS - ATRAVES DA INTERFACE
+				if (cachorroRepositorio.saveCachorroBD(populaCachorro, campo_04.getText())) {
+					JOptionPane.showMessageDialog(null, "Cadastro de Cachorro" + "\n" + "efetuado com sucesso!");
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"Erro ao registrar Cachorro..." + "\n" + "Processo cancelado.!");
+				}
 			}
 		}
 	}
+
+	public Cachorro populaCachorro() {
+
+		Cachorro cachorro = new Cachorro();
+		EnderecoCliente enderecoCliente = new EnderecoCliente();
+
+		cachorro.setNome(campo_01.getText());
+		cachorro.setCaf(Integer.parseInt(campo_02.getText()));
+		cachorro.setCorPelo(campo_03.getText());
+
+		try {
+			cachorro.setEndereco(enderecoCliente.buscarEnderecoPeloCep(campo_05.getText()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cachorro;
+	}
+
 }

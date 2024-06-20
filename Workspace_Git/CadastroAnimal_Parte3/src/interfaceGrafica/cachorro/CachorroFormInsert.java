@@ -1,5 +1,7 @@
 package interfaceGrafica.cachorro;
 
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,10 +14,13 @@ public class CachorroFormInsert {
 
 	public void montaCachorroForm() {
 
+		GridLayout grid = new GridLayout(0, 1);
+
 		String v_campo_01 = "Nome";
 		String v_campo_02 = "CAF";
 		String v_campo_03 = "Cor do Pelo";
 		String v_campo_04 = "Peso";
+		String v_campo_05 = "CEP";
 
 		// CRIANDO FRAME
 		JFrame frmCachorroForm = new JFrame();
@@ -23,6 +28,7 @@ public class CachorroFormInsert {
 
 		// CRIANDO PANEL
 		JPanel panelCachorroForm = new JPanel();
+		panelCachorroForm.setLayout(grid);
 
 		// Agrupando o PANEL ao FRAME
 		frmCachorroForm.add(panelCachorroForm);
@@ -52,13 +58,20 @@ public class CachorroFormInsert {
 
 		JTextField InputCampo04 = new JTextField(10);
 		panelCachorroForm.add(InputCampo04);
-		
+		//
+		JLabel labelCampo05 = new JLabel(v_campo_05);
+		panelCachorroForm.add(labelCampo05);
+
+		JTextField InputCampo05 = new JTextField(10);
+		panelCachorroForm.add(InputCampo05);
+
 		// CRIANDO BOTAO e agrupando no PANEL
 		JButton saveBottom = new JButton("Save Cachorro");
 		panelCachorroForm.add(saveBottom);
 
 		// CRIANDO UM CONTROLADOR (LISTENER) PARA O BOTAO
-		ControladorCachorroFormInsert controladorCachorroForm = new ControladorCachorroFormInsert(InputCampo01, InputCampo02, InputCampo03, InputCampo04 );
+		ControladorCachorroFormInsert controladorCachorroForm = new ControladorCachorroFormInsert(InputCampo01,
+				InputCampo02, InputCampo03, InputCampo04, InputCampo05);
 
 		saveBottom.addActionListener(controladorCachorroForm);
 

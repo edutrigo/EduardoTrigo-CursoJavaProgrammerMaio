@@ -1,5 +1,7 @@
 package interfaceGrafica;
 
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,12 +14,15 @@ public class MainForm {
 
 	public void mainFormMenu() {
 
+		GridLayout grid = new GridLayout(0, 1);
+		
 		// CRIANDO FRAME
 		JFrame frmMainForm = new JFrame();
 		frmMainForm.setSize(130, 300);
 
 		// CRIANDO PANEL
 		JPanel panelMainForm = new JPanel();
+		panelMainForm.setLayout(grid);
 
 		// Agrupando o PANEL ao FRAME
 		frmMainForm.add(panelMainForm);

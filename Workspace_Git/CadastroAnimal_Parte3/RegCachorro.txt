@@ -1,5 +1,5 @@
 Registro Cachorro
 -----------------
-Nome....:CAO XX
-CAF.....:123
-Cor Pelo:AMARELO
+Nome....:03422000
+CAF.....:3422000
+Cor Pelo:03422000
