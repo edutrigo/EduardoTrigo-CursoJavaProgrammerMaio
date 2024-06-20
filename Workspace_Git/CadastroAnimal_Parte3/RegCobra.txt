@@ -1,5 +1,5 @@
 Registro Cobra
 --------------
-Nome.......:COBRA CC
-CAF........:1234
-Tipo Veneno:VENONO
+Nome.......:COBRA 22
+CAF........:22
+Tipo Veneno:PERIGO

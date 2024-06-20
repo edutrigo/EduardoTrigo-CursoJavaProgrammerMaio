@@ -22,6 +22,13 @@ public class CobraRepositorioImplementacao implements CobraRepositorio {
 	}
 
 	@Override
+	public List<Cobra> retQueryCobra() {
+		DaoCobra daoCobra = new DaoCobra();
+
+		return daoCobra.retQueryCobra();
+	}
+
+	@Override
 	public boolean delCobraBD(String caf) {
 		DaoCobra daoCobra = new DaoCobra();
 
@@ -30,13 +37,6 @@ public class CobraRepositorioImplementacao implements CobraRepositorio {
 		} else {
 			return false;
 		}
-	}
-
-	@Override
-	public List<Cobra> retQueryCobra() {
-		DaoCobra daoCobra = new DaoCobra();
-
-		return daoCobra.retQueryCobra();
 	}
 
 	@Override

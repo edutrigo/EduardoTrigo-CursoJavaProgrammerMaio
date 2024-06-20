@@ -1,5 +1,7 @@
 package interfaceGrafica.cobra;
 
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,10 +14,13 @@ public class CobraFormInsert {
 
 	public void montaCobraForm() {
 
+		GridLayout grid = new GridLayout(0, 1);
+
 		String v_campo_01 = "Nome";
 		String v_campo_02 = "CAF";
 		String v_campo_03 = "Tipo Veneno";
 		String v_campo_04 = "Peso";
+		String v_campo_05 = "CEP";
 
 		// CRIANDO FRAME
 		JFrame frmCobraForm = new JFrame();
@@ -23,6 +28,7 @@ public class CobraFormInsert {
 
 		// CRIANDO PANEL
 		JPanel panelCobraForm = new JPanel();
+		panelCobraForm.setLayout(grid);
 
 		// Agrupando o PANEL ao FRAME
 		frmCobraForm.add(panelCobraForm);
@@ -53,13 +59,20 @@ public class CobraFormInsert {
 
 		JTextField InputCampo04 = new JTextField(10);
 		panelCobraForm.add(InputCampo04);
+		//
+		JLabel labelCampo05 = new JLabel(v_campo_05);
+		panelCobraForm.add(labelCampo05);
+
+		JTextField InputCampo05 = new JTextField(10);
+		panelCobraForm.add(InputCampo05);
 
 		// CRIANDO BOTAO e agrupando no PANEL
 		JButton saveBottom = new JButton("Save Cobra");
 		panelCobraForm.add(saveBottom);
 
 		// CRIANDO UM CONTROLADOR (LISTENER) PARA O BOTAO
-		ControladorCobraFormInsert controladorCobraForm = new ControladorCobraFormInsert(InputCampo01, InputCampo02, InputCampo03, InputCampo04);
+		ControladorCobraFormInsert controladorCobraForm = new ControladorCobraFormInsert(InputCampo01, InputCampo02,
+				InputCampo03, InputCampo04, InputCampo05);
 
 		saveBottom.addActionListener(controladorCobraForm);
 
