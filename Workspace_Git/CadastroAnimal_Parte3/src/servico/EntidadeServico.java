@@ -127,4 +127,85 @@ public class EntidadeServico {
 		}
 	}
 
+	public void gerarPdfDetalharCobra(Cobra cobra) {
+		String caminhoArquivo = "C:\\Users\\edutr\\Downloads\\" + "RelatorioDetalharCobra-" + cobra.getNome() + ".pdf";
+		// Caminho do arquivo com o nome do cobra
+		Document document = new Document();
+		// Objeto java do Document que vai ser manipulado
+
+		try {
+			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(caminhoArquivo));
+			writer.setPageEvent(new RodapeTemplate());
+			// Objeto gerador de PDF usando o cabeçalho e rodapé da classe
+			// CabecalhoRodapeTemplate()
+
+			document.open();// Abre Manipulação do objeto Document
+			document.add(new Paragraph("Empresa: IMPACTA", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14)));
+			// Adiciona nome da empresa no cabeçalho
+			document.add(new Paragraph("Relatorio de Detalhe do Cobra",
+					FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14)));
+			// Adiciona o nome do relatorio
+			document.add(new Paragraph(" "));// pular uma linha
+
+			if (cobra != null) {
+
+				PdfPTable table = new PdfPTable(2);// Cria objeto da tabela com a quantidade de colunas
+				table.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
+				table.setWidthPercentage(100);// Ocupação da tabela na pagina
+
+				table.addCell("CAF");// Primeiro item da primeira linha
+				table.addCell(cobra.getCaf().toString());// segundo item da primeira linha
+
+				table.addCell("Nome");
+				table.addCell(cobra.getNome());
+
+				table.addCell("Salario");
+				table.addCell(cobra.getTipoVeneno());
+
+				table.addCell("Cep");
+				table.addCell(cobra.getEndereco().getCep());
+
+				table.addCell("Localidade");
+				table.addCell(cobra.getEndereco().getLocalidade());
+
+				table.addCell("Logradouro");
+				table.addCell(cobra.getEndereco().getLogradouro());
+
+				table.addCell("Bairro");
+				table.addCell(cobra.getEndereco().getBairro());
+
+				table.addCell("Uf");
+				table.addCell(cobra.getEndereco().getUf());
+
+				table.addCell("Siafi");
+				if (cobra.getEndereco().getSiafi() == null) {
+
+					table.addCell("Não informado");
+				} else {
+					table.addCell(cobra.getEndereco().getSiafi());
+				}
+
+				document.add(table);
+
+			}
+
+			document.close();
+
+			File pdfArquivo = new File(caminhoArquivo);
+
+			if (pdfArquivo.exists()) {
+				if (Desktop.isDesktopSupported()) {
+					Desktop.getDesktop().open(pdfArquivo);
+				} else {
+					System.out.println("PDF gerado mas não foi possivel abrir");
+				}
+
+			} else {
+				System.out.println("PDF gerado mas não foi possivel encontrar");
+			}
+
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
 }

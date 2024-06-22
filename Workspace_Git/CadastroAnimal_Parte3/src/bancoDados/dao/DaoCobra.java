@@ -8,6 +8,7 @@ import java.util.List;
 
 import bancoDados.config.CriaConexao;
 import entidade.Cobra;
+import entidade.Endereco;
 
 // DAO - Data Access Object
 public class DaoCobra {
@@ -150,7 +151,7 @@ public class DaoCobra {
 		List<Cobra> listCobra = new ArrayList<>();
 
 		// String SQL
-		String cmdSQL = "select caf, nome, tipo_veneno from animal where tipo_animal='COBRA'";
+		String cmdSQL = "select caf, nome, tipo_veneno, preco, cep, localidade, logradouro, bairro, uf from animal where tipo_animal='COBRA'";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -164,13 +165,25 @@ public class DaoCobra {
 
 			while (resultQuery.next()) {
 
-				Cobra Cobra = new Cobra();
+				// DADOS DIVERSOS
+				Cobra cobra = new Cobra();
+				cobra.setCaf(Integer.parseInt(resultQuery.getString("CAF")));
+				cobra.setNome(resultQuery.getString("NOME"));
+				cobra.setTipoVeneno(resultQuery.getString("TIPO_VENENO"));
+				cobra.setPreco(Double.parseDouble(resultQuery.getString("PRECO")));
 
-				Cobra.setCaf(Integer.parseInt(resultQuery.getString("CAF")));
-				Cobra.setNome(resultQuery.getString("NOME"));
-				Cobra.setTipoVeneno(resultQuery.getString("TIPO_VENENO"));
+				// DADOS ENDERECO
+				Endereco endereco = new Endereco();
+				endereco.setCep(resultQuery.getString("CEP"));
+				endereco.setLocalidade(resultQuery.getString("LOCALIDADE"));
+				endereco.setLogradouro(resultQuery.getString("LOGRADOURO"));
+				endereco.setBairro(resultQuery.getString("BAIRRO"));
+				endereco.setUf(resultQuery.getString("UF"));
 
-				listCobra.add(Cobra);
+				// FAZ-SE O VINCULO DO "ENDERECO" A ENTIDADE "CACHORRO"
+				cobra.setEndereco(endereco);
+
+				listCobra.add(cobra);
 			}
 
 		} catch (Exception e) {

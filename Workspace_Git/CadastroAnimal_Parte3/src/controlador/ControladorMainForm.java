@@ -10,8 +10,6 @@ import javax.swing.JTextField;
 
 import bancoDados.dao.DaoCachorro;
 import bancoDados.dao.DaoCobra;
-import controlador.cachorro.ControladorCachorroQuery;
-import controlador.cobra.ControladorCobraQuery;
 import entidade.Cachorro;
 import entidade.Cobra;
 import interfaceGrafica.cachorro.CachorroFormInsert;
@@ -19,6 +17,7 @@ import interfaceGrafica.cachorro.CachorroFormQuery;
 import interfaceGrafica.cachorro.CachorroFormDelete;
 import interfaceGrafica.cachorro.CachorroFormUpdateSelecao;
 import interfaceGrafica.cobra.CobraFormInsert;
+import interfaceGrafica.cobra.CobraFormQuery;
 import interfaceGrafica.cobra.CobraFormUpdateSelecao;
 import interfaceGrafica.cobra.CobraFormDelete;
 import repositorio.cachorro.CachorroRepositorioImplementacao;
@@ -38,12 +37,14 @@ public class ControladorMainForm implements ActionListener {
 	DaoCachorro daoCachorro = new DaoCachorro();
 	List<Cachorro> listCachorro = new ArrayList<>();
 	Cachorro cachorro = new Cachorro();
+	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
 
 	// Objetos Cobra
 	CobraFormInsert ScrCobraForm = new CobraFormInsert();
 	DaoCobra daoCobra = new DaoCobra();
 	List<Cobra> listCobra = new ArrayList<>();
 	Cobra cobra = new Cobra();
+	CobraRepositorioImplementacao cobraRepositorio = new CobraRepositorioImplementacao();
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -63,8 +64,8 @@ public class ControladorMainForm implements ActionListener {
 			// Lista Cachorro
 
 			// Alimenta objeto "listCobra" com o resultado do método "retQueryCachorro"
-			listCachorro = daoCachorro.retQueryCachorro();
 
+			listCachorro = cachorroRepositorio.retQueryCachorro();
 			// Cria objeto "controladorGridCachorro" para poder usar o método "GridCachorro"
 			// e passar o conteúdo do "listCobra"
 			// No método "GridCachorro" irá alimentar um JTable e montar a tela
@@ -92,13 +93,12 @@ public class ControladorMainForm implements ActionListener {
 
 			// Alimenta objeto "listCobra" com o resultado do método "retQueryCobra"
 
-			listCobra = daoCobra.retQueryCobra();
-
+			listCobra = cobraRepositorio.retQueryCobra();
 			// Cria objeto "controladorGridCobra" para poder usar o método "GridCobra" e
 			// passar o conteúdo do "listCobra"
 			// No método "GridCobra" irá alimentar um JTable e montar a tela
-			ControladorCobraQuery controladorGridCobra = new ControladorCobraQuery();
-			controladorGridCobra.GridCobra(listCobra);
+			CobraFormQuery cobraFormQuery = new CobraFormQuery();
+			cobraFormQuery.GridCobra(listCobra);
 			break;
 		}
 
