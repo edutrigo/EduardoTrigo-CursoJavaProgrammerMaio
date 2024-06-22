@@ -8,6 +8,7 @@ import java.util.List;
 
 import bancoDados.config.CriaConexao;
 import entidade.Cachorro;
+import entidade.Endereco;
 
 // DAO - Data Access Object
 public class DaoCachorro {
@@ -150,7 +151,7 @@ public class DaoCachorro {
 		List<Cachorro> listCachorro = new ArrayList<>();
 
 		// String SQL
-		String cmdSQL = "select caf, nome, cor_pelo, preco from animal where tipo_animal='CACHORRO'";
+		String cmdSQL = "select caf, nome, cor_pelo, preco, cep, localidade, logradouro, bairro, uf from animal where tipo_animal='CACHORRO'";
 
 		try {
 			// Cria a conexão e armazena no objeto "conexaoBD"
@@ -164,13 +165,24 @@ public class DaoCachorro {
 
 			while (resultQuery.next()) {
 
+				// DADOS DIVERSOS
 				Cachorro cachorro = new Cachorro();
-
 				cachorro.setCaf(Integer.parseInt(resultQuery.getString("CAF")));
 				cachorro.setNome(resultQuery.getString("NOME"));
 				cachorro.setCorPelo(resultQuery.getString("COR_PELO"));
 				cachorro.setPreco(Double.parseDouble(resultQuery.getString("PRECO")));
 
+				// DADOS ENDERECO
+				Endereco endereco = new Endereco();
+				endereco.setCep(resultQuery.getString("CEP"));
+				endereco.setLocalidade(resultQuery.getString("LOCALIDADE"));
+				endereco.setLogradouro(resultQuery.getString("LOGRADOURO"));
+				endereco.setBairro(resultQuery.getString("BAIRRO"));
+				endereco.setUf(resultQuery.getString("UF"));
+
+				// FAZ-SE O VINCULO DO "ENDERECO" A ENTIDADE "CACHORRO"
+				cachorro.setEndereco(endereco);
+				
 				listCachorro.add(cachorro);
 			}
 

@@ -15,6 +15,7 @@ import controlador.cobra.ControladorCobraQuery;
 import entidade.Cachorro;
 import entidade.Cobra;
 import interfaceGrafica.cachorro.CachorroFormInsert;
+import interfaceGrafica.cachorro.CachorroFormQuery;
 import interfaceGrafica.cachorro.CachorroFormDelete;
 import interfaceGrafica.cachorro.CachorroFormUpdateSelecao;
 import interfaceGrafica.cobra.CobraFormInsert;
@@ -67,8 +68,8 @@ public class ControladorMainForm implements ActionListener {
 			// Cria objeto "controladorGridCachorro" para poder usar o método "GridCachorro"
 			// e passar o conteúdo do "listCobra"
 			// No método "GridCachorro" irá alimentar um JTable e montar a tela
-			ControladorCachorroQuery controladorGridCachorro = new ControladorCachorroQuery();
-			controladorGridCachorro.GridCachorro(listCachorro);
+			CachorroFormQuery cachorroFormQuery = new CachorroFormQuery();
+			cachorroFormQuery.GridCachorro(listCachorro);
 			/*
 			 * StringBuilder aux = new StringBuilder();
 			 * 
