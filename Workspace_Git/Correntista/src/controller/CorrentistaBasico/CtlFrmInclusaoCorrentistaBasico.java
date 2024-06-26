@@ -1,16 +1,14 @@
-package controller;
+package controller.CorrentistaBasico;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import entity.EntCorrentistaBasico;
-import entity.EntEndereco;
-import enuns.EhPremium;
+import repository.RepCorrentistaBasicoImplement;
 import services.SrvApiCep;
 import validation.VldCampos;
 
@@ -36,9 +34,12 @@ public class CtlFrmInclusaoCorrentistaBasico implements ActionListener {
 		this.frmVoltar = frmVoltar;
 	}
 
-	public EntCorrentistaBasico populaCorrentista() {
+	public EntCorrentistaBasico populaEntCorrentista() {
 
 		EntCorrentistaBasico entCorrentistaBasico = new EntCorrentistaBasico();
+
+		entCorrentistaBasico
+				.setValorAnuidade(entCorrentistaBasico.CalcularAnuidade(Integer.parseInt(qtdTransacao.getText())));
 
 		entCorrentistaBasico.setNome(nome.getText());
 		entCorrentistaBasico.setCpf(cpf.getText());
@@ -47,12 +48,11 @@ public class CtlFrmInclusaoCorrentistaBasico implements ActionListener {
 		entCorrentistaBasico.setLimiteDeSaque(Double.parseDouble(limSaque.getText()));
 
 		try {
-			entCorrentistaBasico.setEndereco(SrvApiCep.buscaEndCep(cpf.getText()));
+			entCorrentistaBasico.setEndereco(SrvApiCep.buscaEndCep(cep.getText()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return entCorrentistaBasico;
-
 	}
 
 	@Override
@@ -60,6 +60,8 @@ public class CtlFrmInclusaoCorrentistaBasico implements ActionListener {
 
 		if (e.getActionCommand() == "Salvar") {
 			VldCampos vldCampos = new VldCampos();
+
+			RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new RepCorrentistaBasicoImplement();
 
 			if (vldCampos.campoNullBranco(nome.getText())) {
 				JOptionPane.showMessageDialog(null, "Campo 'Nome' não pode ficar em branco.");
@@ -98,29 +100,27 @@ public class CtlFrmInclusaoCorrentistaBasico implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Campo 'Lim Saque' só pode contem números.");
 
 				} else {
-					JOptionPane.showMessageDialog(null, "Passou...");
 					EntCorrentistaBasico entCorrentistaBasico = new EntCorrentistaBasico();
-					entCorrentistaBasico = populaCorrentista();
+					entCorrentistaBasico = populaEntCorrentista();
 
-					//CALCULA CalcularAnuidade
-					
 					int confirmacao = JOptionPane.showConfirmDialog(null,
-							"Confirma os dados?" + "\n" + entCorrentistaBasico.getNome() + "\n"
-									+ entCorrentistaBasico.getCpf() + "\n" + entCorrentistaBasico.getEndereco().getCep()
-									+ "\n" + entCorrentistaBasico.getEndereco().getLogradouro() + "\n"
+							"Confirma os dados?" + "\n" + "CPF: " + entCorrentistaBasico.getCpf() + "\n" + "NOME: "
+									+ entCorrentistaBasico.getNome() + "\n" + "VL ANUIDADE: "
+									+ entCorrentistaBasico.getValorAnuidade() + "\n" + "ENDEREÇO:" + "\n"
+									+ entCorrentistaBasico.getEndereco().getCep() + "\n"
+									+ entCorrentistaBasico.getEndereco().getLogradouro() + "\n"
 									+ entCorrentistaBasico.getEndereco().getLocalidade() + "\n"
 									+ entCorrentistaBasico.getEndereco().getUf());
-/*
+
 					if (confirmacao == 0) {
-						if (repCorrentistaBasico.salvaCorrentistaBasico(entCorrentistaBasico)) {
+						if (repCorrentistaBasicoImplement.adicionaCorrentistaBasico(entCorrentistaBasico)) {
 							JOptionPane.showMessageDialog(null,
-									"Cadastro de Correntista Básico" + "\n" + "efetuado com sucesso!");
+									"Cadastro de CORRENTISTA BASICO" + "\n" + "efetuado com sucesso!");
 						} else {
 							JOptionPane.showMessageDialog(null,
 									"Erro ao registrar Correntista Básico..." + "\n" + "Processo cancelado.!");
 						}
 					}
-*/
 				}
 			}
 

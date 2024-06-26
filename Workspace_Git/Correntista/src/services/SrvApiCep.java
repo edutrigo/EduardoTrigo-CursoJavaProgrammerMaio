@@ -63,6 +63,7 @@ public class SrvApiCep {
 	public static EntEndereco buscaEndCep(String cep) throws Exception {
 
 		String urlApi = "https://viacep.com.br/ws/" + cep + "/json/";
+
 		EntEndereco entEndereco = new EntEndereco();
 
 		URL obj = new URL(urlApi);
@@ -90,9 +91,9 @@ public class SrvApiCep {
 			entEndereco = converteJsonParaEndereco(jsonRecebidoDaApi);
 
 		} else {
-			JOptionPane.showMessageDialog(null, "Não foi possivel buscar o endereco do CEP informado");
+			JOptionPane.showMessageDialog(null,
+					"Não foi possivel buscar o endereco do CEP informado: ERRO:" + statusRespostaApi);
 		}
-
 		return entEndereco;
 	}
 }

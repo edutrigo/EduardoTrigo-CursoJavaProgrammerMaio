@@ -19,14 +19,16 @@ public class SrvTemplatePdfFooter extends PdfPageEventHelper {
 		PdfPTable footer = new PdfPTable(2);
 
 		try {
-			footer.setWidths(new int[] { 24, 2 });
+			footer.setWidths(new int[] { 13, 2 });
 			footer.setTotalWidth(527);
 			footer.setLockedWidth(true);
+			
 			footer.getDefaultCell().setFixedHeight(20);
 			footer.getDefaultCell().setBorder(Rectangle.ALIGN_RIGHT);
 
-			footer.addCell(new Phrase("São Paulo", fonte));
-			footer.addCell(new Phrase(new SimpleDateFormat("dd/MM/yy HH:mm:ss").format(new Date())));
+			footer.addCell(new Phrase("SÃO PAULO", fonte));
+			footer.addCell(new Phrase(new SimpleDateFormat("dd/MM/yyyy").format(new Date())));
+
 			footer.writeSelectedRows(0, -1, 34, 50, writer.getDirectContent());
 
 		} catch (Exception e) {

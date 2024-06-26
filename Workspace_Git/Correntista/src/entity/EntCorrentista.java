@@ -7,14 +7,10 @@ public abstract class EntCorrentista {
 	private String email;
 	private int qtdTransacao;
 	private Double valorAnuidade;
-	private String ehPremium; // Identifica se é um correntista Premium: "SIM" ou "NAO"
 
-	public String getEhPremium() {
-		return ehPremium;
-	}
-
-	public void setEhPremium(String ehPremium) {
-		this.ehPremium = ehPremium;
+	// CALCULA ANUIDADE
+	public Double CalcularAnuidade(int qtdTransacao) {
+		return qtdTransacao * 0.5;
 	}
 
 	public String getNome() {

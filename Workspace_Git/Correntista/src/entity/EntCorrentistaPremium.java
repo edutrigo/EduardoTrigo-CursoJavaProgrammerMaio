@@ -10,4 +10,11 @@ public class EntCorrentistaPremium extends EntCorrentista {
 	public void setLimiteDeCredito(Double limiteDeCredito) {
 		LimiteDeCredito = limiteDeCredito;
 	}
+
+	// CALCULA ANUIDADE
+	@Override
+	public Double CalcularAnuidade(int qtdTransacao) {
+		return qtdTransacao * 0.7;
+	}
+
 }

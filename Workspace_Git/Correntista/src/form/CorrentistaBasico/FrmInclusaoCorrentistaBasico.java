@@ -1,4 +1,4 @@
-package form;
+package form.CorrentistaBasico;
 
 import java.awt.GridLayout;
 
@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controller.CtlFrmInclusaoCorrentistaBasico;
+import controller.CorrentistaBasico.CtlFrmInclusaoCorrentistaBasico;
 
 public class FrmInclusaoCorrentistaBasico {
 
