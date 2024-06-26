@@ -6,24 +6,22 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import repository.RepCorrentistaBasicoImplement;
-
-public class CtlFrmExclusaoCorrentistaBasico implements ActionListener {
+public class CtlFrmAlteracaoCorrentistaBasicoSel implements ActionListener {
 
 	JTextField cpf;
 	JFrame frameRetornar;
 
-	public CtlFrmExclusaoCorrentistaBasico(JTextField cpf, JFrame frameRetornar) {
+	public CtlFrmAlteracaoCorrentistaBasicoSel(JTextField cpf, JFrame frameRetornar) {
 		this.cpf = cpf;
 		this.frameRetornar = frameRetornar;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand() == "EXCLUIR") {
-
-			RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new RepCorrentistaBasicoImplement();
-			repCorrentistaBasicoImplement.excluiCorrentista(cpf.getText());
+		if (e.getActionCommand() == "ALTERAR") {
+			// RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new
+			// RepCorrentistaBasicoImplement();
+			// repCorrentistaBasicoImplement.excluiCorrentista(cpf.getText());
 
 		} else if (e.getActionCommand() == "VOLTAR") {
 			frameRetornar.setVisible(false);

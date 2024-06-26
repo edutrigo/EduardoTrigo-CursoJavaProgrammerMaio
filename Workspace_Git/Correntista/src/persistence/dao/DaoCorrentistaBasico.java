@@ -73,7 +73,7 @@ public class DaoCorrentistaBasico {
 	}
 
 	//
-	public List<EntCorrentistaBasico> RetornaConsultaCorrentista() {
+	public List<EntCorrentistaBasico> retornaConsultaCorrentista() {
 
 		PerCriaConexao criaConexao = new PerCriaConexao();
 		Connection conexaoBD = null;
@@ -132,7 +132,7 @@ public class DaoCorrentistaBasico {
 		return listCorrentista;
 	}
 
-	public boolean ExcluiCorrentista(String cpf) {
+	public boolean excluiCorrentista(String cpf) {
 
 		boolean confirmaProcesso = false;
 

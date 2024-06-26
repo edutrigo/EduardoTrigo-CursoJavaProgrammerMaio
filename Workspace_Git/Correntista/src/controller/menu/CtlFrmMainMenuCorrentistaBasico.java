@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import entity.EntCorrentistaBasico;
+import form.CorrentistaBasico.FrmAlteracaoCorrentistaBasicoSel;
 import form.CorrentistaBasico.FrmConsultaCorrentistaBasico;
 import form.CorrentistaBasico.FrmExclusaoCorrentistaBasico;
 import form.CorrentistaBasico.FrmInclusaoCorrentistaBasico;
@@ -39,7 +40,7 @@ public class CtlFrmMainMenuCorrentistaBasico implements ActionListener {
 			List<EntCorrentistaBasico> listCorrentista = new ArrayList<>();
 
 			RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new RepCorrentistaBasicoImplement();
-			listCorrentista = repCorrentistaBasicoImplement.RetornaConsultaCorrentista();
+			listCorrentista = repCorrentistaBasicoImplement.retornaConsultaCorrentista();
 
 			FrmConsultaCorrentistaBasico frmConsultaCorrentistaBasico = new FrmConsultaCorrentistaBasico();
 			frmConsultaCorrentistaBasico.ConsultaCorrentistaBasico(listCorrentista);
@@ -50,7 +51,7 @@ public class CtlFrmMainMenuCorrentistaBasico implements ActionListener {
 			List<EntCorrentistaBasico> listCorrentista = new ArrayList<>();
 
 			RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new RepCorrentistaBasicoImplement();
-			listCorrentista = repCorrentistaBasicoImplement.RetornaConsultaCorrentista();
+			listCorrentista = repCorrentistaBasicoImplement.retornaConsultaCorrentista();
 
 			FrmExclusaoCorrentistaBasico frmExclusaoCorrentistaBasico = new FrmExclusaoCorrentistaBasico();
 			frmExclusaoCorrentistaBasico.ExclusaoCorrentistaBasico(listCorrentista);
@@ -58,6 +59,13 @@ public class CtlFrmMainMenuCorrentistaBasico implements ActionListener {
 		}
 		case "4": {
 			// ATUALIZACAO
+			List<EntCorrentistaBasico> listCorrentista = new ArrayList<>();
+
+			RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new RepCorrentistaBasicoImplement();
+			listCorrentista = repCorrentistaBasicoImplement.retornaConsultaCorrentista();
+
+			FrmAlteracaoCorrentistaBasicoSel frmAlteracaoCorrentistaBasicoSel = new FrmAlteracaoCorrentistaBasicoSel();
+			frmAlteracaoCorrentistaBasicoSel.alteracaoCorrentistaSel(listCorrentista);
 			break;
 		}
 		case "X": {

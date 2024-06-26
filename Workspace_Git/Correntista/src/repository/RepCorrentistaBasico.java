@@ -8,10 +8,10 @@ public interface RepCorrentistaBasico {
 
 	public boolean adicionaCorrentistaBasico(EntCorrentistaBasico entCorrentista);
 
-	public List<EntCorrentistaBasico> RetornaConsultaCorrentista();
+	public List<EntCorrentistaBasico> retornaConsultaCorrentista();
 
 	public EntCorrentistaBasico buscaCorrentistaPorCpf(String cpf);
 
-	public boolean ExcluiCorrentista(String cpf);
+	public boolean excluiCorrentista(String cpf);
 
 }

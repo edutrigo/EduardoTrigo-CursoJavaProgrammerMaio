@@ -14,13 +14,13 @@ public class RepCorrentistaBasicoImplement implements RepCorrentistaBasico {
 		return daoCorrentistaBasico.adicionaCorrentistaBasico(entCorrentista);
 	}
 
-	public List<EntCorrentistaBasico> RetornaConsultaCorrentista() {
+	public List<EntCorrentistaBasico> retornaConsultaCorrentista() {
 		DaoCorrentistaBasico daoCorrentistaBasico = new DaoCorrentistaBasico();
-		return daoCorrentistaBasico.RetornaConsultaCorrentista();
+		return daoCorrentistaBasico.retornaConsultaCorrentista();
 	}
 
 	public EntCorrentistaBasico buscaCorrentistaPorCpf(String cpf) {
-		for (EntCorrentistaBasico entCorrentistaBasico : RetornaConsultaCorrentista()) {
+		for (EntCorrentistaBasico entCorrentistaBasico : retornaConsultaCorrentista()) {
 			if (entCorrentistaBasico.getCpf().toString().equals(cpf)) {
 				return entCorrentistaBasico;
 			}
@@ -28,11 +28,11 @@ public class RepCorrentistaBasicoImplement implements RepCorrentistaBasico {
 		return null;
 	}
 
-	public boolean ExcluiCorrentista(String cpf) {
+	public boolean excluiCorrentista(String cpf) {
 		DaoCorrentistaBasico daoCorrentistaBasico = new DaoCorrentistaBasico();
 
 		if (buscaCorrentistaPorCpf(cpf) != null) {
-			return daoCorrentistaBasico.ExcluiCorrentista(cpf);
+			return daoCorrentistaBasico.excluiCorrentista(cpf);
 		} else {
 			JOptionPane.showMessageDialog(null, "CPF não encontrado...");
 			return false;
