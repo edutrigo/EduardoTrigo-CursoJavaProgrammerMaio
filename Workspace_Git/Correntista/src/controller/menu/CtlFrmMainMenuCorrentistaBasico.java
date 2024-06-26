@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import entity.EntCorrentistaBasico;
 import form.CorrentistaBasico.FrmConsultaCorrentistaBasico;
+import form.CorrentistaBasico.FrmExclusaoCorrentistaBasico;
 import form.CorrentistaBasico.FrmInclusaoCorrentistaBasico;
 import repository.RepCorrentistaBasicoImplement;
 
@@ -46,6 +47,13 @@ public class CtlFrmMainMenuCorrentistaBasico implements ActionListener {
 		}
 		case "3": {
 			// EXCLUSAO
+			List<EntCorrentistaBasico> listCorrentista = new ArrayList<>();
+
+			RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new RepCorrentistaBasicoImplement();
+			listCorrentista = repCorrentistaBasicoImplement.RetornaConsultaCorrentista();
+
+			FrmExclusaoCorrentistaBasico frmExclusaoCorrentistaBasico = new FrmExclusaoCorrentistaBasico();
+			frmExclusaoCorrentistaBasico.ExclusaoCorrentistaBasico(listCorrentista);
 			break;
 		}
 		case "4": {

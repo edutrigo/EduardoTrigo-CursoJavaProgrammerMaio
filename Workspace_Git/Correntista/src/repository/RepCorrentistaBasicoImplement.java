@@ -2,6 +2,8 @@ package repository;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import entity.EntCorrentistaBasico;
 import persistence.dao.DaoCorrentistaBasico;
 
@@ -24,5 +26,16 @@ public class RepCorrentistaBasicoImplement implements RepCorrentistaBasico {
 			}
 		}
 		return null;
+	}
+
+	public boolean ExcluiCorrentista(String cpf) {
+		DaoCorrentistaBasico daoCorrentistaBasico = new DaoCorrentistaBasico();
+
+		if (buscaCorrentistaPorCpf(cpf) != null) {
+			return daoCorrentistaBasico.ExcluiCorrentista(cpf);
+		} else {
+			JOptionPane.showMessageDialog(null, "CPF não encontrado...");
+			return false;
+		}
 	}
 }

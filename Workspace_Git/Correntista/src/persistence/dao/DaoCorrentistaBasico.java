@@ -132,4 +132,45 @@ public class DaoCorrentistaBasico {
 		return listCorrentista;
 	}
 
+	public boolean ExcluiCorrentista(String cpf) {
+
+		boolean confirmaProcesso = false;
+
+		PerCriaConexao criaConexao = new PerCriaConexao();
+		Connection conexaoBD = null;
+		PreparedStatement preComandoSQL = null;
+
+		String cmdSQL = "delete from correntista where tipo_correntista = ? and cpf = ?";
+
+		try {
+			conexaoBD = criaConexao.ConnectBD();
+			preComandoSQL = conexaoBD.prepareStatement(cmdSQL);
+
+			preComandoSQL.setString(1, "B");
+			preComandoSQL.setString(2, cpf);
+
+			preComandoSQL.execute();
+
+			JOptionPane.showMessageDialog(null, "Dados do 'CORRENTISTA BASICO' excluído com sucesso!");
+
+			confirmaProcesso = true;
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Não foi possível excluir as informações..." + "\n" + e.getMessage());
+
+		} finally {
+			try {
+				if (conexaoBD != null) {
+					conexaoBD.close();
+				}
+				if (preComandoSQL != null) {
+					preComandoSQL.close();
+				}
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(null,
+						"Não foi possível encerrar a conexão de BD..." + "\n" + e2.getMessage());
+			}
+		}
+		return confirmaProcesso;
+	}
 }
