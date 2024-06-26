@@ -14,6 +14,7 @@ import persistence.config.PerCriaConexao;
 
 public class DaoCorrentistaBasico {
 
+	//
 	public boolean adicionaCorrentistaBasico(EntCorrentistaBasico entCorrentista) {
 		boolean confirmaProcesso = false;
 
@@ -21,7 +22,6 @@ public class DaoCorrentistaBasico {
 		Connection conexaoBD = null;
 		PreparedStatement preComandoSQL = null;
 
-		// String SQL
 		String cmdSQL = "insert into correntista (cpf, nome, cep, logradouro, localidade, uf, email, qtd_transacao, val_anuidade, limite_saque, tipo_correntista )\r\n"
 				+ "values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
@@ -45,7 +45,6 @@ public class DaoCorrentistaBasico {
 			preComandoSQL.setString(10, entCorrentista.getLimiteDeSaque().toString());
 			preComandoSQL.setString(11, "B");
 
-			// Passa o comando para o BD e também faz o COMMIT
 			preComandoSQL.execute();
 
 			JOptionPane.showMessageDialog(null, "Dados do 'CORRENTISTA BASICO' registrado com sucesso!");
@@ -132,6 +131,7 @@ public class DaoCorrentistaBasico {
 		return listCorrentista;
 	}
 
+	//
 	public boolean excluiCorrentista(String cpf) {
 
 		boolean confirmaProcesso = false;
@@ -166,6 +166,62 @@ public class DaoCorrentistaBasico {
 				if (preComandoSQL != null) {
 					preComandoSQL.close();
 				}
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(null,
+						"Não foi possível encerrar a conexão de BD..." + "\n" + e2.getMessage());
+			}
+		}
+		return confirmaProcesso;
+	}
+
+	//
+	public boolean atualizaCorrentistaBasico(EntCorrentistaBasico entCorrentista) {
+		boolean confirmaProcesso = false;
+
+		PerCriaConexao criaConexao = new PerCriaConexao();
+		Connection conexaoBD = null;
+		PreparedStatement preComandoSQL = null;
+
+		String cmdSQL = "update correntista set nome = ?, cep = ? ,logradouro = ?, localidade = ?, uf = ?, email = ?, qtd_transacao = ?, val_anuidade = ?, limite_saque = ?"
+				+ "where cpf = ? and tipo_correntista = ?";
+
+		try {
+			conexaoBD = criaConexao.ConnectBD();
+			preComandoSQL = conexaoBD.prepareStatement(cmdSQL);
+
+			preComandoSQL.setString(1, entCorrentista.getNome());
+
+			preComandoSQL.setString(2, entCorrentista.getEndereco().getCep());
+			preComandoSQL.setString(3, entCorrentista.getEndereco().getLogradouro());
+			preComandoSQL.setString(4, entCorrentista.getEndereco().getLocalidade());
+			preComandoSQL.setString(5, entCorrentista.getEndereco().getUf());
+
+			preComandoSQL.setString(6, entCorrentista.getEmail());
+			preComandoSQL.setString(7, Integer.toString(entCorrentista.getQtdTransacao()));
+			preComandoSQL.setString(8, entCorrentista.getValorAnuidade().toString());
+			preComandoSQL.setString(9, entCorrentista.getLimiteDeSaque().toString());
+
+			preComandoSQL.setString(10, entCorrentista.getCpf());
+			preComandoSQL.setString(11, "B");
+
+			preComandoSQL.execute();
+
+			JOptionPane.showMessageDialog(null, "Dados do 'CORRENTISTA BASICO' alterado com sucesso!");
+
+			confirmaProcesso = true;
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Não foi possível salvar as informações..." + "\n" + e.getMessage());
+
+		} finally {
+			try {
+				if (conexaoBD != null) {
+					conexaoBD.close();
+				}
+				if (conexaoBD != null) {
+					conexaoBD.close();
+				}
+
 			} catch (Exception e2) {
 				JOptionPane.showMessageDialog(null,
 						"Não foi possível encerrar a conexão de BD..." + "\n" + e2.getMessage());

@@ -38,4 +38,9 @@ public class RepCorrentistaBasicoImplement implements RepCorrentistaBasico {
 			return false;
 		}
 	}
+
+	public boolean atualizaCorrentistaBasico(EntCorrentistaBasico entCorrentista) {
+		DaoCorrentistaBasico daoCorrentistaBasico = new DaoCorrentistaBasico();
+		return daoCorrentistaBasico.atualizaCorrentistaBasico(entCorrentista);
+	}
 }

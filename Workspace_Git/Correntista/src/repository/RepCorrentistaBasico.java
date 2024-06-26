@@ -14,4 +14,5 @@ public interface RepCorrentistaBasico {
 
 	public boolean excluiCorrentista(String cpf);
 
+	public boolean atualizaCorrentistaBasico(EntCorrentistaBasico entCorrentista);
 }

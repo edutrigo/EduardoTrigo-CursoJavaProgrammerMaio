@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controller.CorrentistaBasico.CtlFrmInclusaoCorrentistaBasico;
+import controller.CorrentistaBasico.CtlFrmAlteracaoCorrentistaBasicoManut;
 import entity.EntCorrentistaBasico;
 import entity.EntEndereco;
 
@@ -23,6 +23,15 @@ public class FrmAlteracaoCorrentistaBasicoManut {
 		pnCorrentista.setLayout(grid);
 		frmCorrentista.add(pnCorrentista);
 
+		// CPF
+		JLabel lbCpf = new JLabel("CPF: " + entCorrentista.getCpf());
+		pnCorrentista.add(lbCpf);
+		//
+		JTextField tfCpf = new JTextField(10);
+		pnCorrentista.add(tfCpf);
+		tfCpf.setText(entCorrentista.getCpf());
+		tfCpf.setVisible(false);
+
 		// NOME
 		JLabel lbNome = new JLabel("Nome");
 		pnCorrentista.add(lbNome);
@@ -30,17 +39,10 @@ public class FrmAlteracaoCorrentistaBasicoManut {
 		pnCorrentista.add(tfNome);
 		tfNome.setText(entCorrentista.getNome());
 
-		// CPF
-		JLabel lbCpf = new JLabel("CPF");
-		pnCorrentista.add(lbCpf);
-		JTextField tfCpf = new JTextField(10);
-		pnCorrentista.add(tfCpf);
-		tfCpf.setText(entCorrentista.getCpf());
-
 		// CEP
 		EntEndereco entEndereco = new EntEndereco();
 		entEndereco = entCorrentista.getEndereco();
-
+		//
 		JLabel lbCep = new JLabel("CEP");
 		pnCorrentista.add(lbCep);
 		JTextField tfCep = new JTextField(10);
@@ -69,17 +71,18 @@ public class FrmAlteracaoCorrentistaBasicoManut {
 		tfLimSaque.setText(Double.toString(entCorrentista.getLimiteDeSaque()));
 
 		//
-		JButton svBottom = new JButton("Salvar");
+		JButton svBottom = new JButton("SALVAR");
 		pnCorrentista.add(svBottom);
 
-		JButton bkBottom = new JButton("Voltar");
+		JButton bkBottom = new JButton("VOLTAR");
 		pnCorrentista.add(bkBottom);
 
-		CtlFrmInclusaoCorrentistaBasico ctlFrmInclusao = new CtlFrmInclusaoCorrentistaBasico(tfNome, tfCpf, tfCep,
-				tfEmail, tfQtdTrans, tfLimSaque, frmCorrentista);
+		//
+		CtlFrmAlteracaoCorrentistaBasicoManut ctlFrmAlteracaoCorrentistaBasicoManut = new CtlFrmAlteracaoCorrentistaBasicoManut(
+				tfNome, tfCpf, tfCep, tfEmail, tfQtdTrans, tfLimSaque, frmCorrentista);
 
-		svBottom.addActionListener(ctlFrmInclusao);
-		bkBottom.addActionListener(ctlFrmInclusao);
+		svBottom.addActionListener(ctlFrmAlteracaoCorrentistaBasicoManut);
+		bkBottom.addActionListener(ctlFrmAlteracaoCorrentistaBasicoManut);
 
 		frmCorrentista.setVisible(true);
 	}

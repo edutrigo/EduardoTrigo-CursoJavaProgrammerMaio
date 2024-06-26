@@ -63,63 +63,27 @@ public class CtlFrmInclusaoCorrentistaBasico implements ActionListener {
 
 			RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new RepCorrentistaBasicoImplement();
 
-			if (vldCampos.campoNullBranco(nome.getText())) {
-				JOptionPane.showMessageDialog(null, "Campo 'Nome' não pode ficar em branco.");
-			}
+			if (vldCampos.VldAddModifiedField(nome.getText(), cpf.getText(), cep.getText(), email.getText(),
+					qtdTransacao.getText(), limSaque.getText())) {
+				EntCorrentistaBasico entCorrentistaBasico = new EntCorrentistaBasico();
+				entCorrentistaBasico = populaEntCorrentista();
 
-			else if (vldCampos.campoNullBranco(cpf.getText())) {
-				JOptionPane.showMessageDialog(null, "Campo 'CPF' não pode ficar em branco.");
-			}
+				int confirmacao = JOptionPane.showConfirmDialog(null,
+						"Confirma os dados?" + "\n" + "CPF: " + entCorrentistaBasico.getCpf() + "\n" + "NOME: "
+								+ entCorrentistaBasico.getNome() + "\n" + "VL ANUIDADE: "
+								+ entCorrentistaBasico.getValorAnuidade() + "\n" + "ENDEREÇO:" + "\n"
+								+ entCorrentistaBasico.getEndereco().getCep() + "\n"
+								+ entCorrentistaBasico.getEndereco().getLogradouro() + "\n"
+								+ entCorrentistaBasico.getEndereco().getLocalidade() + "\n"
+								+ entCorrentistaBasico.getEndereco().getUf());
 
-			else if (vldCampos.campoNullBranco(cep.getText())) {
-				JOptionPane.showMessageDialog(null, "Campo 'CEP' não pode ficar em branco.");
-			}
-
-			else if (vldCampos.campoNullBranco(email.getText())) {
-				JOptionPane.showMessageDialog(null, "Campo 'eMail' não pode ficar em branco.");
-			}
-
-			else if (vldCampos.campoNullBranco(qtdTransacao.getText())) {
-				JOptionPane.showMessageDialog(null, "Campo 'Qtd Transação' não pode ficar em branco.");
-			}
-
-			else if (vldCampos.campoNullBranco(limSaque.getText())) {
-				JOptionPane.showMessageDialog(null, "Campo 'Lim Saque' não pode ficar em branco.");
-			} else {
-
-				if (vldCampos.campoDouble(cpf.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "Campo 'CPF' só pode contem números.");
-
-				} else if (vldCampos.campoInteger(cep.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "Campo 'CEP' só pode contem números.");
-
-				} else if (vldCampos.campoInteger(qtdTransacao.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "Campo 'Qtd Transação' só pode contem números.");
-
-				} else if (vldCampos.campoInteger(limSaque.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "Campo 'Lim Saque' só pode contem números.");
-
-				} else {
-					EntCorrentistaBasico entCorrentistaBasico = new EntCorrentistaBasico();
-					entCorrentistaBasico = populaEntCorrentista();
-
-					int confirmacao = JOptionPane.showConfirmDialog(null,
-							"Confirma os dados?" + "\n" + "CPF: " + entCorrentistaBasico.getCpf() + "\n" + "NOME: "
-									+ entCorrentistaBasico.getNome() + "\n" + "VL ANUIDADE: "
-									+ entCorrentistaBasico.getValorAnuidade() + "\n" + "ENDEREÇO:" + "\n"
-									+ entCorrentistaBasico.getEndereco().getCep() + "\n"
-									+ entCorrentistaBasico.getEndereco().getLogradouro() + "\n"
-									+ entCorrentistaBasico.getEndereco().getLocalidade() + "\n"
-									+ entCorrentistaBasico.getEndereco().getUf());
-
-					if (confirmacao == 0) {
-						if (repCorrentistaBasicoImplement.adicionaCorrentistaBasico(entCorrentistaBasico)) {
-							JOptionPane.showMessageDialog(null,
-									"Cadastro de CORRENTISTA BASICO" + "\n" + "efetuado com sucesso!");
-						} else {
-							JOptionPane.showMessageDialog(null,
-									"Erro ao registrar Correntista Básico..." + "\n" + "Processo cancelado.!");
-						}
+				if (confirmacao == 0) {
+					if (repCorrentistaBasicoImplement.adicionaCorrentistaBasico(entCorrentistaBasico)) {
+						JOptionPane.showMessageDialog(null,
+								"Cadastro de CORRENTISTA BASICO" + "\n" + "efetuado com sucesso!");
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Erro ao registrar Correntista Básico..." + "\n" + "Processo cancelado.!");
 					}
 				}
 			}
