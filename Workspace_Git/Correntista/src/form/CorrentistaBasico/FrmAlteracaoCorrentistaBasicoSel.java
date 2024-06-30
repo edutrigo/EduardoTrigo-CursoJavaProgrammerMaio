@@ -20,7 +20,7 @@ public class FrmAlteracaoCorrentistaBasicoSel {
 
 		int qtdRegistros = listaCorrentista.size();
 
-		String[][] gridString = new String[qtdRegistros][11];
+		String[][] gridString = new String[qtdRegistros][10];
 
 		int posColuna = 0;
 		int posLinha = 0;
@@ -61,9 +61,6 @@ public class FrmAlteracaoCorrentistaBasicoSel {
 			gridString[posLinha][posColuna] = Double.toString(entCorrentistaBasico.getLimiteDeSaque());
 			posColuna++;
 
-			gridString[posLinha][posColuna] = Double.toString(entCorrentistaBasico.getLimiteDeSaque());
-			posColuna++;
-
 			posLinha++;
 			posColuna = 0;
 		}
@@ -72,7 +69,7 @@ public class FrmAlteracaoCorrentistaBasicoSel {
 		frameCorrentista.setSize(1000, 250);
 
 		String nomeColunas[] = { "Cpf", "Nome", "Cep", "Logradouro", "Localidade", "Uf", "Email", "QtdTrans", "ValAnui",
-				"LimSsaque" };
+				"LimSaque" };
 
 		JTable tbCorrentista = new JTable(gridString, nomeColunas);
 

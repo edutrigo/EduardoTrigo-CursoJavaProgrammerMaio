@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import entity.EntCorrentistaBasico;
-import repository.RepCorrentistaBasicoImplement;
+import repository.CorrentistaBasico.RepCorrentistaBasicoImplement;
 import services.SrvApiCep;
 import validation.VldCampos;
 
@@ -64,7 +64,7 @@ public class CtlFrmInclusaoCorrentistaBasico implements ActionListener {
 			RepCorrentistaBasicoImplement repCorrentistaBasicoImplement = new RepCorrentistaBasicoImplement();
 
 			if (vldCampos.VldAddModifiedField(nome.getText(), cpf.getText(), cep.getText(), email.getText(),
-					qtdTransacao.getText(), limSaque.getText())) {
+					qtdTransacao.getText(), limSaque.getText(), null, "B")) {
 				EntCorrentistaBasico entCorrentistaBasico = new EntCorrentistaBasico();
 				entCorrentistaBasico = populaEntCorrentista();
 

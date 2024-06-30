@@ -1,4 +1,4 @@
-package form.CorrentistaBasico;
+package form.CorrentistaPremium;
 
 import java.awt.Dimension;
 import java.util.List;
@@ -10,13 +10,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import controller.CorrentistaBasico.CtlFrmConsultaCorrentistaBasico;
-import entity.EntCorrentistaBasico;
+import controller.CorrentistaPremium.CtlFrmConsultaCorrentistaPremium;
+import entity.EntCorrentistaPremium;
 import entity.EntEndereco;
 
-public class FrmConsultaCorrentistaBasico {
+public class FrmConsultaCorrentistaPremium {
 
-	public void ConsultaCorrentistaBasico(List<EntCorrentistaBasico> listaCorrentista) {
+	public void ConsultaCorrentistaPremium(List<EntCorrentistaPremium> listaCorrentista) {
 
 		int qtdRegistros = listaCorrentista.size();
 
@@ -25,16 +25,16 @@ public class FrmConsultaCorrentistaBasico {
 		int posColuna = 0;
 		int posLinha = 0;
 
-		for (EntCorrentistaBasico entCorrentistaBasico : listaCorrentista) {
+		for (EntCorrentistaPremium entCorrentistaPremium : listaCorrentista) {
 
 			EntEndereco entEndereco = new EntEndereco();
 
-			entEndereco = entCorrentistaBasico.getEndereco();
+			entEndereco = entCorrentistaPremium.getEndereco();
 
-			gridString[posLinha][posColuna] = entCorrentistaBasico.getCpf().toString();
+			gridString[posLinha][posColuna] = entCorrentistaPremium.getCpf().toString();
 			posColuna++;
 
-			gridString[posLinha][posColuna] = entCorrentistaBasico.getNome();
+			gridString[posLinha][posColuna] = entCorrentistaPremium.getNome();
 			posColuna++;
 
 			gridString[posLinha][posColuna] = entEndereco.getCep();
@@ -49,16 +49,16 @@ public class FrmConsultaCorrentistaBasico {
 			gridString[posLinha][posColuna] = entEndereco.getUf();
 			posColuna++;
 
-			gridString[posLinha][posColuna] = entCorrentistaBasico.getEmail();
+			gridString[posLinha][posColuna] = entCorrentistaPremium.getEmail();
 			posColuna++;
 
-			gridString[posLinha][posColuna] = Integer.toString(entCorrentistaBasico.getQtdTransacao());
+			gridString[posLinha][posColuna] = Integer.toString(entCorrentistaPremium.getQtdTransacao());
 			posColuna++;
 
-			gridString[posLinha][posColuna] = Double.toString(entCorrentistaBasico.getValorAnuidade());
+			gridString[posLinha][posColuna] = Double.toString(entCorrentistaPremium.getValorAnuidade());
 			posColuna++;
 
-			gridString[posLinha][posColuna] = Double.toString(entCorrentistaBasico.getLimiteDeSaque());
+			gridString[posLinha][posColuna] = Double.toString(entCorrentistaPremium.getLimiteDeCredito());
 			posColuna++;
 
 			posLinha++;
@@ -69,7 +69,7 @@ public class FrmConsultaCorrentistaBasico {
 		frameCorrentista.setSize(1000, 250);
 
 		String nomeColunas[] = { "Cpf", "Nome", "Cep", "Logradouro", "Localidade", "Uf", "Email", "QtdTrans", "ValAnui",
-				"LimSaque" };
+				"LimCredito" };
 
 		JTable tbCorrentista = new JTable(gridString, nomeColunas);
 
@@ -92,10 +92,10 @@ public class FrmConsultaCorrentistaBasico {
 
 		frameCorrentista.add(pnCorrentista);
 
-		CtlFrmConsultaCorrentistaBasico ctlFrmConsultaCorrentistaBasico = new CtlFrmConsultaCorrentistaBasico(cpf,
+		CtlFrmConsultaCorrentistaPremium ctlFrmConsultaCorrentistaPremium = new CtlFrmConsultaCorrentistaPremium(cpf,
 				frameCorrentista);
-		botaoPDF.addActionListener(ctlFrmConsultaCorrentistaBasico);
-		botaoVoltar.addActionListener(ctlFrmConsultaCorrentistaBasico);
+		botaoPDF.addActionListener(ctlFrmConsultaCorrentistaPremium);
+		botaoVoltar.addActionListener(ctlFrmConsultaCorrentistaPremium);
 
 		frameCorrentista.setVisible(true);
 	}

@@ -10,7 +10,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import controller.CorrentistaBasico.CtlFrmConsultaCorrentistaBasico;
 import controller.CorrentistaBasico.CtlFrmExclusaoCorrentistaBasico;
 import entity.EntCorrentistaBasico;
 import entity.EntEndereco;
@@ -21,7 +20,7 @@ public class FrmExclusaoCorrentistaBasico {
 
 		int qtdRegistros = listaCorrentista.size();
 
-		String[][] gridString = new String[qtdRegistros][11];
+		String[][] gridString = new String[qtdRegistros][10];
 
 		int posColuna = 0;
 		int posLinha = 0;
@@ -62,9 +61,6 @@ public class FrmExclusaoCorrentistaBasico {
 			gridString[posLinha][posColuna] = Double.toString(entCorrentistaBasico.getLimiteDeSaque());
 			posColuna++;
 
-			gridString[posLinha][posColuna] = Double.toString(entCorrentistaBasico.getLimiteDeSaque());
-			posColuna++;
-
 			posLinha++;
 			posColuna = 0;
 		}
@@ -73,7 +69,7 @@ public class FrmExclusaoCorrentistaBasico {
 		frameCorrentista.setSize(1000, 250);
 
 		String nomeColunas[] = { "Cpf", "Nome", "Cep", "Logradouro", "Localidade", "Uf", "Email", "QtdTrans", "ValAnui",
-				"LimSsaque" };
+				"LimSaque" };
 
 		JTable tbCorrentista = new JTable(gridString, nomeColunas);
 

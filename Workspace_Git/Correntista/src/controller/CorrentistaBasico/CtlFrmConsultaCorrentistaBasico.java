@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import entity.EntCorrentistaBasico;
-import repository.RepCorrentistaBasicoImplement;
+import repository.CorrentistaBasico.RepCorrentistaBasicoImplement;
 import services.SrvCriarPdf;
 
 public class CtlFrmConsultaCorrentistaBasico implements ActionListener {
@@ -34,7 +34,7 @@ public class CtlFrmConsultaCorrentistaBasico implements ActionListener {
 				entCorrentistaBasico = repCorrentistaBasicoImplement.buscaCorrentistaPorCpf(cpf.getText());
 
 				SrvCriarPdf srvCriarPdf = new SrvCriarPdf();
-				srvCriarPdf.gerarPdfCorrentista(entCorrentistaBasico);
+				srvCriarPdf.gerarPdfCorrentistaBasico(entCorrentistaBasico);
 			}
 
 			else {

@@ -14,7 +14,7 @@ import form.CorrentistaBasico.FrmAlteracaoCorrentistaBasicoSel;
 import form.CorrentistaBasico.FrmConsultaCorrentistaBasico;
 import form.CorrentistaBasico.FrmExclusaoCorrentistaBasico;
 import form.CorrentistaBasico.FrmInclusaoCorrentistaBasico;
-import repository.RepCorrentistaBasicoImplement;
+import repository.CorrentistaBasico.RepCorrentistaBasicoImplement;
 
 public class CtlFrmMainMenuCorrentistaBasico implements ActionListener {
 

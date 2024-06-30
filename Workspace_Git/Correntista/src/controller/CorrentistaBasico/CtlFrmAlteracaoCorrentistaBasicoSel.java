@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 import entity.EntCorrentistaBasico;
 import form.CorrentistaBasico.FrmAlteracaoCorrentistaBasicoManut;
-import repository.RepCorrentistaBasicoImplement;
+import repository.CorrentistaBasico.RepCorrentistaBasicoImplement;
 
 public class CtlFrmAlteracaoCorrentistaBasicoSel implements ActionListener {
 

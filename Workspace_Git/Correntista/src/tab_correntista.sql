@@ -22,18 +22,18 @@ and tipo_correntista = 'B'
 
 
 update correntista
-set nome = 
-   ,cep =
-   ,logradouro =
-   ,localidade =
-   ,uf =
-   ,email =
-   ,qtd_transacao =
-   ,val_anuidade =
-   ,limite_credito =
-   ,limite_saque =
-where cpf = cpf
-and tipo_correntista = 'B'
+set nome = ?
+   ,cep = ?
+   ,logradouro = ?
+   ,localidade = ?
+   ,uf = ?
+   ,email = ?
+   ,qtd_transacao = ?
+   ,val_anuidade = ?
+   ,limite_credito = ?
+   ,limite_saque = ?
+where cpf = ?
+and tipo_correntista = ?
 
 
 select cpf, nome, cep, logradouro, localidade, uf, email, qtd_transacao, val_anuidade, limite_credito, limite_saque, tipo_correntista

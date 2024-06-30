@@ -1,4 +1,4 @@
-package repository;
+package repository.CorrentistaBasico;
 
 import java.util.List;
 
